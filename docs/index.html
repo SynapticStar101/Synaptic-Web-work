@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Synaptic Stars Retro Universe - Free retro games made with Vibe coding. Play Barney's BinDaRoids and Barney's Bins: The Rubbish Run!" />
+  <title>Synaptic Stars Retro Universe</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Skip to content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Sound toggle -->
+  <div class="sound-control" role="region" aria-label="Sound controls">
+    <button id="sound-toggle" class="sound-btn" aria-pressed="false" aria-label="Toggle site sounds on or off">
+      <span class="sound-icon" aria-hidden="true">&#128266;</span>
+      <span class="sound-label">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <!-- HEADER / LOGO -->
+  <header class="site-header" role="banner">
+    <div class="logo-container">
+      <div class="logo-art" aria-label="Synaptic Stars logo: a neon brain crackling with creative energy and a cosmic unicorn">
+        <!-- SVG Neon Brain + Unicorn Logo -->
+        <svg class="logo-svg" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neon brain fizzing with creative energy alongside a cosmic unicorn">
+          <defs>
+            <filter id="neon-glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="hot-glow">
+              <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Brain shape -->
+          <g filter="url(#neon-glow)">
+            <!-- Left hemisphere -->
+            <ellipse cx="100" cy="95" rx="50" ry="55" fill="none" stroke="#ff00ff" stroke-width="3"/>
+            <!-- Right hemisphere -->
+            <ellipse cx="148" cy="95" rx="50" ry="55" fill="none" stroke="#ff00ff" stroke-width="3"/>
+            <!-- Centre divide -->
+            <line x1="124" y1="45" x2="124" y2="145" stroke="#ff00ff" stroke-width="2" stroke-dasharray="4,4"/>
+            <!-- Brain folds - left -->
+            <path d="M70 75 Q85 65 100 75 Q115 85 130 75" fill="none" stroke="#cc00ff" stroke-width="2"/>
+            <path d="M65 95 Q85 85 105 95 Q120 105 135 95" fill="none" stroke="#cc00ff" stroke-width="2"/>
+            <path d="M70 115 Q90 105 110 115 Q128 125 138 115" fill="none" stroke="#cc00ff" stroke-width="2"/>
+            <!-- Brain folds - right -->
+            <path d="M118 75 Q138 65 158 75 Q170 85 180 75" fill="none" stroke="#cc00ff" stroke-width="2"/>
+            <path d="M118 95 Q140 85 160 95 Q175 105 185 95" fill="none" stroke="#cc00ff" stroke-width="2"/>
+            <path d="M120 115 Q142 105 162 115 Q176 125 185 115" fill="none" stroke="#cc00ff" stroke-width="2"/>
+          </g>
+
+          <!-- Sparks / creative energy bolts -->
+          <g filter="url(#hot-glow)">
+            <line x1="124" y1="35" x2="110" y2="10" stroke="#ffff00" stroke-width="2.5"/>
+            <line x1="110" y1="10" x2="130" y2="0" stroke="#ffff00" stroke-width="2"/>
+            <line x1="150" y1="48" x2="175" y2="20" stroke="#00ffff" stroke-width="2.5"/>
+            <line x1="175" y1="20" x2="165" y2="5" stroke="#00ffff" stroke-width="2"/>
+            <line x1="80" y1="50" x2="55" y2="25" stroke="#ff6600" stroke-width="2.5"/>
+            <line x1="55" y1="25" x2="68" y2="8" stroke="#ff6600" stroke-width="2"/>
+            <!-- Stars -->
+            <text x="100" y="8" font-size="14" fill="#ffff00" filter="url(#hot-glow)">&#10024;</text>
+            <text x="162" y="6" font-size="12" fill="#00ffff" filter="url(#hot-glow)">&#9889;</text>
+            <text x="50" y="10" font-size="12" fill="#ff6600" filter="url(#hot-glow)">&#11088;</text>
+          </g>
+
+          <!-- Unicorn (right side) -->
+          <g transform="translate(240, 30)" filter="url(#neon-glow)">
+            <!-- Body -->
+            <ellipse cx="70" cy="90" rx="45" ry="30" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
+            <!-- Head -->
+            <circle cx="108" cy="65" r="22" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
+            <!-- Horn -->
+            <polygon points="108,43 102,20 114,20" fill="none" stroke="#ffff00" stroke-width="2" filter="url(#hot-glow)"/>
+            <!-- Horn sparkle -->
+            <text x="104" y="15" font-size="10" fill="#ffff00">&#10022;</text>
+            <!-- Mane -->
+            <path d="M92 50 Q80 60 82 75 Q84 90 75 98" fill="none" stroke="#cc00ff" stroke-width="3"/>
+            <path d="M88 48 Q74 58 76 73 Q78 88 68 96" fill="none" stroke="#ff00ff" stroke-width="2"/>
+            <path d="M84 46 Q68 56 70 71 Q72 86 62 94" fill="none" stroke="#00ffff" stroke-width="2"/>
+            <!-- Legs -->
+            <line x1="50" y1="115" x2="45" y2="148" stroke="#ff69b4" stroke-width="2.5"/>
+            <line x1="65" y1="118" x2="62" y2="150" stroke="#ff69b4" stroke-width="2.5"/>
+            <line x1="85" y1="118" x2="88" y2="150" stroke="#ff69b4" stroke-width="2.5"/>
+            <line x1="100" y1="115" x2="105" y2="148" stroke="#ff69b4" stroke-width="2.5"/>
+            <!-- Tail -->
+            <path d="M25 90 Q5 80 10 105 Q15 130 5 140" fill="none" stroke="#cc00ff" stroke-width="3"/>
+            <path d="M25 90 Q2 85 7 112 Q12 138 0 148" fill="none" stroke="#ff00ff" stroke-width="2"/>
+            <!-- Eye -->
+            <circle cx="115" cy="60" r="4" fill="#00ffff"/>
+            <circle cx="116" cy="59" r="1.5" fill="#ffffff"/>
+            <!-- Stars around unicorn -->
+            <text x="130" y="40" font-size="10" fill="#ffff00" filter="url(#hot-glow)">&#10024;</text>
+            <text x="20" y="70" font-size="8" fill="#ff69b4" filter="url(#hot-glow)">&#11088;</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="logo-text">
+        <h1 class="site-title">
+          <span class="title-synaptic">SYNAPTIC</span>
+          <span class="title-stars">STARS</span>
+          <span class="title-universe">RETRO UNIVERSE</span>
+        </h1>
+        <p class="site-tagline">Free Retro Games &bull; Vibe Coded &bull; Brain-Meltingly Fun</p>
+      </div>
+    </div>
+
+    <!-- Scrolling marquee for atmosphere -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-inner">
+        INSERT COIN &nbsp;&nbsp; &#9889; &nbsp;&nbsp; PLAYER ONE READY &nbsp;&nbsp; &#9829; &nbsp;&nbsp; HIGH SCORE AWAITS &nbsp;&nbsp; &#10024; &nbsp;&nbsp; SYNAPTIC STARS &nbsp;&nbsp; &#127756; &nbsp;&nbsp; GAME ON &nbsp;&nbsp; &#11088; &nbsp;&nbsp; INSERT COIN &nbsp;&nbsp; &#9889; &nbsp;&nbsp; PLAYER ONE READY &nbsp;&nbsp; &#9829; &nbsp;&nbsp; HIGH SCORE AWAITS &nbsp;&nbsp; &#10024; &nbsp;&nbsp; SYNAPTIC STARS &nbsp;&nbsp; &#127756; &nbsp;&nbsp; GAME ON &nbsp;&nbsp; &#11088;
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+
+    <!-- GAMES SECTION -->
+    <section class="games-section" aria-labelledby="games-heading">
+      <h2 id="games-heading" class="section-heading">
+        <span aria-hidden="true">&#127918;</span> SELECT YOUR GAME <span aria-hidden="true">&#127918;</span>
+      </h2>
+      <p class="section-subtitle">All games are FREE &mdash; no sign-up, no nonsense. Just pure retro fun.</p>
+
+      <div class="games-grid" role="list">
+
+        <!-- Game Tile 1: BinDaRoids -->
+        <article class="game-tile" role="listitem">
+          <a href="https://bindaroids.netlify.app" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's BinDaRoids - an asteroids-style retro blaster (opens in new tab)">
+            <div class="game-tile-inner">
+              <div class="game-screen-preview" aria-hidden="true">
+                <div class="pixel-art-bindaroids">
+                  <div class="pa-stars">
+                    <span class="pa-star s1">&#9679;</span>
+                    <span class="pa-star s2">&#9679;</span>
+                    <span class="pa-star s3">&#9679;</span>
+                    <span class="pa-star s4">&#9679;</span>
+                    <span class="pa-star s5">&#9679;</span>
+                  </div>
+                  <div class="pa-ship">&#9650;</div>
+                  <div class="pa-asteroids">
+                    <span class="pa-rock r1">&#11039;</span>
+                    <span class="pa-rock r2">&#11039;</span>
+                    <span class="pa-rock r3">&#11039;</span>
+                  </div>
+                  <div class="pa-bins">
+                    <span class="pa-bin">&#128465;</span>
+                    <span class="pa-bin">&#128465;</span>
+                  </div>
+                  <div class="pa-laser" aria-hidden="true">|</div>
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">Barney's BinDaRoids!</h3>
+                <p class="game-genre">&#9889; ARCADE BLASTER</p>
+                <p class="game-desc">Blast through waves of rogue rubbish bins in this retro asteroid-style shooter. Dodge, aim, and destroy!</p>
+                <span class="play-btn" aria-hidden="true">&#9654; PLAY NOW</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Game Tile 2: The Rubbish Run -->
+        <article class="game-tile" role="listitem">
+          <a href="https://barneysrubbish.netlify.app" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's Bins: The Rubbish Run - a retro runner (opens in new tab)">
+            <div class="game-tile-inner">
+              <div class="game-screen-preview" aria-hidden="true">
+                <div class="pixel-art-rubbish">
+                  <div class="pa-road">
+                    <div class="pa-lane-line"></div>
+                  </div>
+                  <div class="pa-runner">&#128694;</div>
+                  <div class="pa-obstacles">
+                    <span class="pa-bin-o b1">&#128465;</span>
+                    <span class="pa-bin-o b2">&#128465;</span>
+                    <span class="pa-bin-o b3">&#128465;</span>
+                  </div>
+                  <div class="pa-score-preview">HI: 9999</div>
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">Barney's Bins &mdash; The Rubbish Run!</h3>
+                <p class="game-genre">&#128694; ENDLESS RUNNER</p>
+                <p class="game-desc">Run, jump, and dodge a never-ending avalanche of bins in this addictive retro runner. How far can you go?</p>
+                <span class="play-btn" aria-hidden="true">&#9654; PLAY NOW</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BLOG LINK SECTION -->
+    <section class="blog-section" aria-labelledby="blog-heading">
+      <h2 id="blog-heading" class="section-heading">
+        <span aria-hidden="true">&#128221;</span> THE VIBE DISPATCH <span aria-hidden="true">&#128221;</span>
+      </h2>
+      <div class="blog-promo">
+        <div class="blog-promo-inner">
+          <div class="blog-badge" aria-hidden="true">
+            <span class="blog-icon">&#129302;</span>
+            <span class="blog-badge-text">NEW POST</span>
+          </div>
+          <div class="blog-promo-text">
+            <h3 class="blog-title-promo">Misadventures in Vibing with Code and Claude</h3>
+            <p class="blog-subtitle-promo">A true non-dev stumble through an alien space</p>
+            <p class="blog-desc-promo">No coding background. No idea what I was doing. Just vibes, Claude, and a dangerous amount of caffeine. Come read the chaotic, hilarious, surprisingly heartwarming journey of building these games from absolute scratch.</p>
+            <a href="blog/index.html" class="blog-link-btn" aria-label="Read the Misadventures in Vibing with Code and Claude blog">
+              <span aria-hidden="true">&#128214;</span> READ THE BLOG
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-heading">
+        <span aria-hidden="true">&#9889;</span> WHAT IS THIS PLACE? <span aria-hidden="true">&#9889;</span>
+      </h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon" aria-hidden="true">&#129504;</div>
+          <h3>Vibe Coded</h3>
+          <p>These games were created using AI-assisted "vibe coding" &mdash; describing what I wanted and letting Claude help build it. No prior dev experience required!</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon" aria-hidden="true">&#127918;</div>
+          <h3>Retro Soul</h3>
+          <p>Inspired by golden-age arcade classics. Simple mechanics, addictive gameplay, pixel-perfect vibes. Your browser is the arcade cabinet.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon" aria-hidden="true">&#127775;</div>
+          <h3>Always Free</h3>
+          <p>No subscriptions, no ads, no sign-ups. Just click and play. Games are a gift &mdash; enjoy them.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-title">SYNAPTIC STARS RETRO UNIVERSE</p>
+      <p class="footer-copy">&copy; 2026 Synaptic Stars &bull; Made with vibes, Claude &amp; chaos &bull; All games free to play</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="https://bindaroids.netlify.app" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
+        <a href="https://barneysrubbish.netlify.app" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+      </nav>
+      <p class="footer-credits" aria-hidden="true">&#9889; &#11088; &#9889; &#11088; &#9889;</p>
+    </div>
+  </footer>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
