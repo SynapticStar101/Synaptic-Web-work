@@ -27,7 +27,7 @@
     <div class="logo-container">
       <div class="logo-art" aria-label="Synaptic Stars logo: a neon brain crackling with creative energy and a cosmic unicorn">
         <!-- SVG Neon Brain + Unicorn Logo -->
-        <svg class="logo-svg" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neon brain fizzing with creative energy alongside a cosmic unicorn">
+        <svg class="logo-svg" viewBox="0 0 430 185" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cartoon neon brain fizzing with creative energy alongside a cute cosmic unicorn">
           <defs>
             <filter id="neon-glow">
               <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -37,68 +37,156 @@
               <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
               <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
+            <radialGradient id="brain-grad" cx="40%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="#ff88ee"/>
+              <stop offset="100%" stop-color="#cc00aa"/>
+            </radialGradient>
+            <radialGradient id="unicorn-body" cx="38%" cy="32%" r="62%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#ffe4f8"/>
+            </radialGradient>
           </defs>
 
-          <!-- Brain shape -->
-          <g filter="url(#neon-glow)">
-            <!-- Left hemisphere -->
-            <ellipse cx="100" cy="95" rx="50" ry="55" fill="none" stroke="#ff00ff" stroke-width="3"/>
-            <!-- Right hemisphere -->
-            <ellipse cx="148" cy="95" rx="50" ry="55" fill="none" stroke="#ff00ff" stroke-width="3"/>
-            <!-- Centre divide -->
-            <line x1="124" y1="45" x2="124" y2="145" stroke="#ff00ff" stroke-width="2" stroke-dasharray="4,4"/>
-            <!-- Brain folds - left -->
-            <path d="M70 75 Q85 65 100 75 Q115 85 130 75" fill="none" stroke="#cc00ff" stroke-width="2"/>
-            <path d="M65 95 Q85 85 105 95 Q120 105 135 95" fill="none" stroke="#cc00ff" stroke-width="2"/>
-            <path d="M70 115 Q90 105 110 115 Q128 125 138 115" fill="none" stroke="#cc00ff" stroke-width="2"/>
-            <!-- Brain folds - right -->
-            <path d="M118 75 Q138 65 158 75 Q170 85 180 75" fill="none" stroke="#cc00ff" stroke-width="2"/>
-            <path d="M118 95 Q140 85 160 95 Q175 105 185 95" fill="none" stroke="#cc00ff" stroke-width="2"/>
-            <path d="M120 115 Q142 105 162 115 Q176 125 185 115" fill="none" stroke="#cc00ff" stroke-width="2"/>
-          </g>
+          <!-- ══════════════════════════════ -->
+          <!-- CARTOON BRAIN                  -->
+          <!-- ══════════════════════════════ -->
 
-          <!-- Sparks / creative energy bolts -->
+          <!-- Glow shadow under brain -->
+          <ellipse cx="108" cy="158" rx="66" ry="9" fill="#ff00ff" opacity="0.3" filter="url(#neon-glow)"/>
+
+          <!-- Top bumps (drawn behind main body so they peek above) -->
+          <circle cx="72"  cy="52" r="17" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
+          <circle cx="108" cy="40" r="20" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
+          <circle cx="144" cy="52" r="17" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
+
+          <!-- Main brain blob body -->
+          <path d="M 55,148 Q 30,148 28,118 Q 22,88 46,66 Q 58,50 72,50 Q 83,38 108,36 Q 133,38 144,50 Q 160,50 170,66 Q 192,88 188,118 Q 186,148 160,148 Q 132,160 108,158 Q 80,160 55,148 Z"
+            fill="url(#brain-grad)" stroke="#000" stroke-width="3.5"/>
+
+          <!-- Centre fold dashed line -->
+          <path d="M 108,44 Q 113,82 108,122 Q 104,142 108,156" fill="none" stroke="#880066" stroke-width="2.5" stroke-dasharray="5,4"/>
+
+          <!-- Brain wrinkle folds - left side -->
+          <path d="M 46,92 Q 66,80 88,92 Q 100,99 108,92" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M 42,114 Q 64,103 86,114 Q 100,120 108,114" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+
+          <!-- Brain wrinkle folds - right side -->
+          <path d="M 108,92 Q 118,85 140,92 Q 158,99 174,90" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M 108,114 Q 120,106 142,114 Q 160,120 176,112" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+
+          <!-- LEFT cartoon eye -->
+          <ellipse cx="82" cy="118" rx="11" ry="12" fill="white" stroke="#000" stroke-width="2.5"/>
+          <circle cx="82" cy="119" r="7"  fill="#bb00ff"/>
+          <circle cx="82" cy="119" r="3.5" fill="#000"/>
+          <circle cx="85" cy="115" r="2.5" fill="white"/>
+
+          <!-- RIGHT cartoon eye -->
+          <ellipse cx="134" cy="118" rx="11" ry="12" fill="white" stroke="#000" stroke-width="2.5"/>
+          <circle cx="134" cy="119" r="7"  fill="#bb00ff"/>
+          <circle cx="134" cy="119" r="3.5" fill="#000"/>
+          <circle cx="137" cy="115" r="2.5" fill="white"/>
+
+          <!-- Rosy cheeks -->
+          <circle cx="64"  cy="130" r="9" fill="#ff69b4" opacity="0.55"/>
+          <circle cx="152" cy="130" r="9" fill="#ff69b4" opacity="0.55"/>
+
+          <!-- Big happy smile -->
+          <path d="M 90,138 Q 108,154 126,138" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- Lightning bolt sparks -->
           <g filter="url(#hot-glow)">
-            <line x1="124" y1="35" x2="110" y2="10" stroke="#ffff00" stroke-width="2.5"/>
-            <line x1="110" y1="10" x2="130" y2="0" stroke="#ffff00" stroke-width="2"/>
-            <line x1="150" y1="48" x2="175" y2="20" stroke="#00ffff" stroke-width="2.5"/>
-            <line x1="175" y1="20" x2="165" y2="5" stroke="#00ffff" stroke-width="2"/>
-            <line x1="80" y1="50" x2="55" y2="25" stroke="#ff6600" stroke-width="2.5"/>
-            <line x1="55" y1="25" x2="68" y2="8" stroke="#ff6600" stroke-width="2"/>
-            <!-- Stars -->
-            <text x="100" y="8" font-size="14" fill="#ffff00" filter="url(#hot-glow)">&#10024;</text>
-            <text x="162" y="6" font-size="12" fill="#00ffff" filter="url(#hot-glow)">&#9889;</text>
-            <text x="50" y="10" font-size="12" fill="#ff6600" filter="url(#hot-glow)">&#11088;</text>
+            <!-- Left bolt -->
+            <polygon points="66,46 58,26 62,26 53,8  66,24 62,24" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
+            <!-- Centre bolt -->
+            <polygon points="110,32 103,10 107,10 99,-2 113,10 109,10" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
+            <!-- Right bolt -->
+            <polygon points="148,44 156,24 152,24 162,5 149,22 153,22" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
+            <!-- Sparkle dots -->
+            <circle cx="44"  cy="20" r="4" fill="#00ffff"/>
+            <circle cx="176" cy="16" r="3" fill="#ff69b4"/>
+            <circle cx="36"  cy="56" r="3" fill="#ffee00"/>
+            <circle cx="182" cy="52" r="3" fill="#00ffff"/>
+            <circle cx="108" cy="2"  r="3" fill="#ff69b4"/>
           </g>
 
-          <!-- Unicorn (right side) -->
-          <g transform="translate(240, 30)" filter="url(#neon-glow)">
-            <!-- Body -->
-            <ellipse cx="70" cy="90" rx="45" ry="30" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
-            <!-- Head -->
-            <circle cx="108" cy="65" r="22" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
-            <!-- Horn -->
-            <polygon points="108,43 102,20 114,20" fill="none" stroke="#ffff00" stroke-width="2" filter="url(#hot-glow)"/>
-            <!-- Horn sparkle -->
-            <text x="104" y="15" font-size="10" fill="#ffff00">&#10022;</text>
-            <!-- Mane -->
-            <path d="M92 50 Q80 60 82 75 Q84 90 75 98" fill="none" stroke="#cc00ff" stroke-width="3"/>
-            <path d="M88 48 Q74 58 76 73 Q78 88 68 96" fill="none" stroke="#ff00ff" stroke-width="2"/>
-            <path d="M84 46 Q68 56 70 71 Q72 86 62 94" fill="none" stroke="#00ffff" stroke-width="2"/>
-            <!-- Legs -->
-            <line x1="50" y1="115" x2="45" y2="148" stroke="#ff69b4" stroke-width="2.5"/>
-            <line x1="65" y1="118" x2="62" y2="150" stroke="#ff69b4" stroke-width="2.5"/>
-            <line x1="85" y1="118" x2="88" y2="150" stroke="#ff69b4" stroke-width="2.5"/>
-            <line x1="100" y1="115" x2="105" y2="148" stroke="#ff69b4" stroke-width="2.5"/>
-            <!-- Tail -->
-            <path d="M25 90 Q5 80 10 105 Q15 130 5 140" fill="none" stroke="#cc00ff" stroke-width="3"/>
-            <path d="M25 90 Q2 85 7 112 Q12 138 0 148" fill="none" stroke="#ff00ff" stroke-width="2"/>
-            <!-- Eye -->
-            <circle cx="115" cy="60" r="4" fill="#00ffff"/>
-            <circle cx="116" cy="59" r="1.5" fill="#ffffff"/>
-            <!-- Stars around unicorn -->
-            <text x="130" y="40" font-size="10" fill="#ffff00" filter="url(#hot-glow)">&#10024;</text>
-            <text x="20" y="70" font-size="8" fill="#ff69b4" filter="url(#hot-glow)">&#11088;</text>
+          <!-- ══════════════════════════════ -->
+          <!-- CARTOON UNICORN                -->
+          <!-- ══════════════════════════════ -->
+
+          <!-- Glow shadow under unicorn -->
+          <ellipse cx="328" cy="164" rx="60" ry="9" fill="#ff69b4" opacity="0.3" filter="url(#neon-glow)"/>
+
+          <!-- Chubby legs (behind body) -->
+          <rect x="285" y="136" width="15" height="30" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+          <rect x="305" y="138" width="15" height="28" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+          <rect x="338" y="138" width="15" height="28" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+          <rect x="358" y="136" width="15" height="30" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+
+          <!-- Rainbow tail (layered, fluffy) -->
+          <path d="M 387,108 Q 418,90 414,118 Q 418,146 402,156 Q 396,162 388,154" fill="#cc00ff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M 387,113 Q 421,98 417,126 Q 421,152 405,162" fill="#ff00cc" opacity="0.8" stroke="none"/>
+          <path d="M 387,119 Q 422,108 418,135 Q 422,158 408,167" fill="#00ccff" opacity="0.7" stroke="none"/>
+          <path d="M 387,124 Q 420,116 416,142 Q 419,163 407,170" fill="#ffff00" opacity="0.6" stroke="none"/>
+
+          <!-- Chubby body -->
+          <ellipse cx="328" cy="118" rx="62" ry="40" fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
+
+          <!-- Neck connecting body to head -->
+          <path d="M 282,104 Q 274,80 285,66 Q 294,55 310,58 Q 326,58 332,72 Q 338,84 332,104 Z"
+            fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
+
+          <!-- Rainbow mane flowing down neck -->
+          <path d="M 312,34 Q 330,54 328,76 Q 326,94 318,106 Q 312,114 308,114" fill="#ff2222" stroke="none"/>
+          <path d="M 317,33 Q 336,54 334,76 Q 332,95 324,106 Q 318,115 314,115" fill="#ff8800" stroke="none"/>
+          <path d="M 322,32 Q 342,54 340,77 Q 338,96 330,107 Q 324,116 320,116" fill="#ffff00" stroke="none"/>
+          <path d="M 327,33 Q 348,55 346,79 Q 344,98 336,108 Q 330,118 326,118" fill="#00ee44" stroke="none"/>
+          <path d="M 331,35 Q 353,58 351,82 Q 349,101 341,111 Q 335,120 331,120" fill="#00ccff" stroke="none"/>
+          <path d="M 335,38 Q 358,62 356,86 Q 354,105 346,115 Q 340,124 336,124" fill="#cc00ff" stroke="none"/>
+          <!-- Mane outline -->
+          <path d="M 312,34 Q 358,62 356,86 Q 353,108 336,122" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Big round cartoon head -->
+          <circle cx="300" cy="62" r="34" fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
+
+          <!-- Pointy ear -->
+          <polygon points="320,34 329,16 338,34" fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+          <polygon points="322,34 329,20 336,34" fill="#ffccee" stroke="none"/>
+
+          <!-- Spiral gold horn -->
+          <polygon points="300,28 292,-2 308,-2" fill="#ffd700" stroke="#000" stroke-width="2.5"/>
+          <path d="M 296,20 Q 302,12 305,4" fill="none" stroke="#ff9900" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 299,24 Q 304,17 307,9" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Horn glow -->
+          <polygon points="300,28 292,-2 308,-2" fill="none" stroke="#ffff88" stroke-width="1.5" filter="url(#hot-glow)" opacity="0.9"/>
+
+          <!-- Big cute cartoon eye -->
+          <ellipse cx="287" cy="60" rx="14" ry="15" fill="white" stroke="#000" stroke-width="2.5"/>
+          <circle cx="287" cy="61" r="10" fill="#8800cc"/>
+          <circle cx="288" cy="61" r="5.5" fill="#000"/>
+          <circle cx="292" cy="56" r="3.5" fill="white"/>
+          <circle cx="283" cy="65" r="1.8" fill="white" opacity="0.8"/>
+
+          <!-- Eyelashes -->
+          <path d="M 275,49 Q 280,43 287,45" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M 285,44 Q 289,38 295,42" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M 295,46 Q 301,42 303,47" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+
+          <!-- Rosy cheek -->
+          <circle cx="274" cy="72" r="9" fill="#ff69b4" opacity="0.55"/>
+
+          <!-- Little smile -->
+          <path d="M 279,78 Q 286,86 293,78" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+
+          <!-- Nostril dot -->
+          <ellipse cx="275" cy="70" rx="3" ry="2" fill="#ffccdd" stroke="#cc88aa" stroke-width="1"/>
+
+          <!-- Sparkles around unicorn -->
+          <g filter="url(#hot-glow)">
+            <circle cx="412" cy="78"  r="5" fill="#ffff00"/>
+            <circle cx="260" cy="38"  r="4" fill="#00ffff"/>
+            <circle cx="420" cy="118" r="3" fill="#ff69b4"/>
+            <circle cx="258" cy="130" r="3" fill="#ffee00"/>
+            <circle cx="418" cy="145" r="2" fill="#00ffff"/>
           </g>
         </svg>
       </div>
@@ -135,7 +223,7 @@
 
         <!-- Game Tile 1: BinDaRoids -->
         <article class="game-tile" role="listitem">
-          <a href="https://bindaroids.netlify.app" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's BinDaRoids - an asteroids-style retro blaster (opens in new tab)">
+          <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's BinDaRoids - an asteroids-style retro blaster (opens in new tab)">
             <div class="game-tile-inner">
               <div class="game-screen-preview" aria-hidden="true">
                 <div class="pixel-art-bindaroids">
@@ -171,7 +259,7 @@
 
         <!-- Game Tile 2: The Rubbish Run -->
         <article class="game-tile" role="listitem">
-          <a href="https://barneysrubbish.netlify.app" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's Bins: The Rubbish Run - a retro runner (opens in new tab)">
+          <a href="https://synapticstar101.github.io/Barneys-Bins-The-Rubbish-Run/" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's Bins: The Rubbish Run - a retro runner (opens in new tab)">
             <div class="game-tile-inner">
               <div class="game-screen-preview" aria-hidden="true">
                 <div class="pixel-art-rubbish">
@@ -257,8 +345,8 @@
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="index.html">Home</a>
         <a href="blog/index.html">Blog</a>
-        <a href="https://bindaroids.netlify.app" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
-        <a href="https://barneysrubbish.netlify.app" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+        <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
+        <a href="https://synapticstar101.github.io/Barneys-Bins-The-Rubbish-Run/" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
       </nav>
       <p class="footer-credits" aria-hidden="true">&#9889; &#11088; &#9889; &#11088; &#9889;</p>
     </div>
