@@ -25,9 +25,9 @@
   <!-- HEADER / LOGO -->
   <header class="site-header" role="banner">
     <div class="logo-container">
-      <div class="logo-art" aria-label="Synaptic Stars logo: a neon brain crackling with creative energy and a cosmic unicorn">
-        <!-- SVG Neon Brain + Unicorn Logo -->
-        <svg class="logo-svg" viewBox="0 0 430 185" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cartoon neon brain fizzing with creative energy alongside a cute cosmic unicorn">
+      <div class="logo-art" aria-label="Synaptic Stars logo: a friendly retro robot with glowing star eyes and purple-tipped cone antennae crackling with electric energy">
+        <!-- SVG Retro Robot Logo -->
+        <svg class="logo-svg" viewBox="0 0 430 185" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Friendly retro robot mascot with glowing star eyes, cone antennae topped with purple balls and a fizzing lightning bolt between them">
           <defs>
             <filter id="neon-glow">
               <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -37,162 +37,146 @@
               <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
               <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
-            <radialGradient id="brain-grad" cx="40%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ff88ee"/>
-              <stop offset="100%" stop-color="#cc00aa"/>
+            <radialGradient id="robot-head-grad" cx="38%" cy="28%" r="65%">
+              <stop offset="0%" stop-color="#99ddff"/>
+              <stop offset="100%" stop-color="#1a3388"/>
             </radialGradient>
-            <radialGradient id="unicorn-body" cx="38%" cy="32%" r="62%">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#ffe4f8"/>
+            <radialGradient id="robot-body-grad" cx="38%" cy="28%" r="65%">
+              <stop offset="0%" stop-color="#5588cc"/>
+              <stop offset="100%" stop-color="#0d1f66"/>
+            </radialGradient>
+            <radialGradient id="antenna-ball-grad" cx="32%" cy="28%" r="65%">
+              <stop offset="0%" stop-color="#ee88ff"/>
+              <stop offset="100%" stop-color="#880099"/>
             </radialGradient>
           </defs>
 
           <!-- ══════════════════════════════ -->
-          <!-- CARTOON BRAIN                  -->
+          <!-- RETRO ROBOT MASCOT             -->
           <!-- ══════════════════════════════ -->
 
-          <!-- Glow shadow under brain -->
-          <ellipse cx="108" cy="158" rx="66" ry="9" fill="#ff00ff" opacity="0.3" filter="url(#neon-glow)"/>
+          <!-- Afterglow shadow under robot -->
+          <ellipse cx="215" cy="179" rx="84" ry="7" fill="#ff00ff" opacity="0.35" filter="url(#neon-glow)"/>
 
-          <!-- Top bumps (drawn behind main body so they peek above) -->
-          <circle cx="72"  cy="52" r="17" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
-          <circle cx="108" cy="40" r="20" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
-          <circle cx="144" cy="52" r="17" fill="url(#brain-grad)" stroke="#000" stroke-width="3"/>
+          <!-- ── FEET (drawn first, behind legs) ── -->
+          <!-- Left foot -->
+          <rect x="161" y="176" width="44" height="8" rx="4" fill="url(#robot-head-grad)" stroke="#000" stroke-width="2"/>
+          <!-- Right foot -->
+          <rect x="225" y="176" width="44" height="8" rx="4" fill="url(#robot-head-grad)" stroke="#000" stroke-width="2"/>
 
-          <!-- Main brain blob body -->
-          <path d="M 55,148 Q 30,148 28,118 Q 22,88 46,66 Q 58,50 72,50 Q 83,38 108,36 Q 133,38 144,50 Q 160,50 170,66 Q 192,88 188,118 Q 186,148 160,148 Q 132,160 108,158 Q 80,160 55,148 Z"
-            fill="url(#brain-grad)" stroke="#000" stroke-width="3.5"/>
+          <!-- ── LEGS ── -->
+          <!-- Left leg -->
+          <rect x="168" y="159" width="34" height="22" rx="6" fill="url(#robot-body-grad)" stroke="#000" stroke-width="2.5"/>
+          <!-- Right leg -->
+          <rect x="228" y="159" width="34" height="22" rx="6" fill="url(#robot-body-grad)" stroke="#000" stroke-width="2.5"/>
 
-          <!-- Centre fold dashed line -->
-          <path d="M 108,44 Q 113,82 108,122 Q 104,142 108,156" fill="none" stroke="#880066" stroke-width="2.5" stroke-dasharray="5,4"/>
+          <!-- ── ARM CLAMPS / HANDS (behind arms) ── -->
+          <!-- Left clamp -->
+          <rect x="98" y="143" width="22" height="18" rx="5" fill="url(#robot-head-grad)" stroke="#000" stroke-width="2.5"/>
+          <line x1="109" y1="145" x2="109" y2="159" stroke="#112266" stroke-width="2.2"/>
+          <!-- Right clamp -->
+          <rect x="310" y="143" width="22" height="18" rx="5" fill="url(#robot-head-grad)" stroke="#000" stroke-width="2.5"/>
+          <line x1="321" y1="145" x2="321" y2="159" stroke="#112266" stroke-width="2.2"/>
 
-          <!-- Brain wrinkle folds - left side -->
-          <path d="M 46,92 Q 66,80 88,92 Q 100,99 108,92" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 42,114 Q 64,103 86,114 Q 100,120 108,114" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- ── ARMS ── -->
+          <!-- Left arm -->
+          <rect x="103" y="111" width="44" height="38" rx="10" fill="url(#robot-body-grad)" stroke="#000" stroke-width="3"/>
+          <rect x="108" y="121" width="34" height="4" rx="1" fill="#224499" opacity="0.55"/>
+          <!-- Right arm -->
+          <rect x="283" y="111" width="44" height="38" rx="10" fill="url(#robot-body-grad)" stroke="#000" stroke-width="3"/>
+          <rect x="288" y="121" width="34" height="4" rx="1" fill="#224499" opacity="0.55"/>
 
-          <!-- Brain wrinkle folds - right side -->
-          <path d="M 108,92 Q 118,85 140,92 Q 158,99 174,90" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 108,114 Q 120,106 142,114 Q 160,120 176,112" fill="none" stroke="#aa0088" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- ── BODY ── -->
+          <rect x="147" y="109" width="136" height="52" rx="9" fill="url(#robot-body-grad)" stroke="#000" stroke-width="3"/>
+          <!-- Body top accent stripe -->
+          <rect x="147" y="109" width="136" height="7" rx="9" fill="#2255aa" opacity="0.55"/>
+          <!-- Left dial -->
+          <circle cx="182" cy="132" r="10" fill="#0d1f66" stroke="#88ccff" stroke-width="2"/>
+          <circle cx="182" cy="132" r="5.5" fill="#00ffff" opacity="0.9" filter="url(#neon-glow)"/>
+          <!-- Centre mini control panel -->
+          <rect x="206" y="121" width="18" height="11" rx="2" fill="#0d1f66" stroke="#88ccff" stroke-width="1.5"/>
+          <rect x="207" y="124" width="4" height="3" rx="0.5" fill="#00ffff"/>
+          <rect x="213" y="124" width="4" height="3" rx="0.5" fill="#00ffff"/>
+          <rect x="207" y="128" width="10" height="2.5" rx="0.5" fill="#4488ff"/>
+          <rect x="206" y="135" width="18" height="11" rx="2" fill="#0d1f66" stroke="#ff69b4" stroke-width="1.5"/>
+          <rect x="208" y="138" width="14" height="5" rx="1" fill="#ff00ff" opacity="0.6"/>
+          <!-- Right dial -->
+          <circle cx="248" cy="132" r="10" fill="#0d1f66" stroke="#88ccff" stroke-width="2"/>
+          <circle cx="248" cy="132" r="5.5" fill="#ff00ff" opacity="0.9" filter="url(#neon-glow)"/>
 
-          <!-- LEFT cartoon eye -->
-          <ellipse cx="82" cy="118" rx="11" ry="12" fill="white" stroke="#000" stroke-width="2.5"/>
-          <circle cx="82" cy="119" r="7"  fill="#bb00ff"/>
-          <circle cx="82" cy="119" r="3.5" fill="#000"/>
-          <circle cx="85" cy="115" r="2.5" fill="white"/>
+          <!-- ── HEAD ── -->
+          <rect x="156" y="24" width="118" height="87" rx="14" fill="url(#robot-head-grad)" stroke="#000" stroke-width="3.5"/>
+          <!-- Forehead vent panel -->
+          <rect x="198" y="31" width="34" height="8" rx="3" fill="#112266" stroke="#4466aa" stroke-width="1.5"/>
+          <line x1="204" y1="32.5" x2="204" y2="38" stroke="#5599cc" stroke-width="1.3"/>
+          <line x1="210" y1="32.5" x2="210" y2="38" stroke="#5599cc" stroke-width="1.3"/>
+          <line x1="215" y1="32.5" x2="215" y2="38" stroke="#5599cc" stroke-width="1.3"/>
+          <line x1="220" y1="32.5" x2="220" y2="38" stroke="#5599cc" stroke-width="1.3"/>
+          <line x1="226" y1="32.5" x2="226" y2="38" stroke="#5599cc" stroke-width="1.3"/>
+          <!-- Corner rivets -->
+          <circle cx="163" cy="32" r="3.5" fill="#223366" stroke="#000" stroke-width="1"/>
+          <circle cx="267" cy="32" r="3.5" fill="#223366" stroke="#000" stroke-width="1"/>
+          <circle cx="163" cy="103" r="3.5" fill="#223366" stroke="#000" stroke-width="1"/>
+          <circle cx="267" cy="103" r="3.5" fill="#223366" stroke="#000" stroke-width="1"/>
 
-          <!-- RIGHT cartoon eye -->
-          <ellipse cx="134" cy="118" rx="11" ry="12" fill="white" stroke="#000" stroke-width="2.5"/>
-          <circle cx="134" cy="119" r="7"  fill="#bb00ff"/>
-          <circle cx="134" cy="119" r="3.5" fill="#000"/>
-          <circle cx="137" cy="115" r="2.5" fill="white"/>
-
-          <!-- Rosy cheeks -->
-          <circle cx="64"  cy="130" r="9" fill="#ff69b4" opacity="0.55"/>
-          <circle cx="152" cy="130" r="9" fill="#ff69b4" opacity="0.55"/>
-
-          <!-- Big happy smile -->
-          <path d="M 90,138 Q 108,154 126,138" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/>
-
-          <!-- Lightning bolt sparks -->
-          <g filter="url(#hot-glow)">
-            <!-- Left bolt -->
-            <polygon points="66,46 58,26 62,26 53,8  66,24 62,24" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
-            <!-- Centre bolt -->
-            <polygon points="110,32 103,10 107,10 99,-2 113,10 109,10" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
-            <!-- Right bolt -->
-            <polygon points="148,44 156,24 152,24 162,5 149,22 153,22" fill="#ffee00" stroke="#ff7700" stroke-width="1.2"/>
-            <!-- Sparkle dots -->
-            <circle cx="44"  cy="20" r="4" fill="#00ffff"/>
-            <circle cx="176" cy="16" r="3" fill="#ff69b4"/>
-            <circle cx="36"  cy="56" r="3" fill="#ffee00"/>
-            <circle cx="182" cy="52" r="3" fill="#00ffff"/>
-            <circle cx="108" cy="2"  r="3" fill="#ff69b4"/>
+          <!-- ── STAR EYES ── -->
+          <g filter="url(#neon-glow)">
+            <!-- Left star eye centred at (193, 67) R=14 r=5.5 -->
+            <polygon points="193,53 196.1,62.5 206.3,63.1 198.4,69.5 201.3,79.5 193,74 184.7,79.5 187.6,69.5 179.7,63.1 189.9,62.5"
+                     fill="#ffee00" stroke="#ff8800" stroke-width="1.5"/>
+            <circle cx="196" cy="61" r="2.8" fill="white" opacity="0.9"/>
+            <!-- Right star eye centred at (237, 67) -->
+            <polygon points="237,53 240.1,62.5 250.3,63.1 242.4,69.5 245.3,79.5 237,74 228.7,79.5 231.6,69.5 223.7,63.1 233.9,62.5"
+                     fill="#ffee00" stroke="#ff8800" stroke-width="1.5"/>
+            <circle cx="240" cy="61" r="2.8" fill="white" opacity="0.9"/>
           </g>
 
-          <!-- ══════════════════════════════ -->
-          <!-- CARTOON UNICORN                -->
-          <!-- ══════════════════════════════ -->
+          <!-- Rosy cheeks -->
+          <circle cx="167" cy="92" r="10" fill="#ff69b4" opacity="0.5"/>
+          <circle cx="263" cy="92" r="10" fill="#ff69b4" opacity="0.5"/>
 
-          <!-- Glow shadow under unicorn -->
-          <ellipse cx="328" cy="164" rx="60" ry="9" fill="#ff69b4" opacity="0.3" filter="url(#neon-glow)"/>
+          <!-- Big friendly smile -->
+          <path d="M 189,86 Q 215,107 241,86" fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round"/>
+          <!-- Smile highlight -->
+          <path d="M 192,87 Q 215,104 238,87" fill="white" stroke="none" opacity="0.5"/>
 
-          <!-- Chubby legs (behind body) -->
-          <rect x="285" y="136" width="15" height="30" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
-          <rect x="305" y="138" width="15" height="28" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
-          <rect x="338" y="138" width="15" height="28" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
-          <rect x="358" y="136" width="15" height="30" rx="7"  fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
+          <!-- ── LEFT ANTENNA (cone shape + purple ball) ── -->
+          <!-- Cone: wide at head, narrows to ball -->
+          <polygon points="170,24 192,24 181,5" fill="#aaccff" stroke="#000" stroke-width="2.5"/>
+          <!-- Purple ball on tip -->
+          <circle cx="181" cy="4" r="8" fill="url(#antenna-ball-grad)" stroke="#000" stroke-width="2" filter="url(#neon-glow)"/>
 
-          <!-- Rainbow tail (layered, fluffy) -->
-          <path d="M 387,108 Q 418,90 414,118 Q 418,146 402,156 Q 396,162 388,154" fill="#cc00ff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M 387,113 Q 421,98 417,126 Q 421,152 405,162" fill="#ff00cc" opacity="0.8" stroke="none"/>
-          <path d="M 387,119 Q 422,108 418,135 Q 422,158 408,167" fill="#00ccff" opacity="0.7" stroke="none"/>
-          <path d="M 387,124 Q 420,116 416,142 Q 419,163 407,170" fill="#ffff00" opacity="0.6" stroke="none"/>
+          <!-- ── RIGHT ANTENNA (cone shape + purple ball) ── -->
+          <polygon points="238,24 260,24 249,5" fill="#aaccff" stroke="#000" stroke-width="2.5"/>
+          <!-- Purple ball on tip -->
+          <circle cx="249" cy="4" r="8" fill="url(#antenna-ball-grad)" stroke="#000" stroke-width="2" filter="url(#neon-glow)"/>
 
-          <!-- Chubby body -->
-          <ellipse cx="328" cy="118" rx="62" ry="40" fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
-
-          <!-- Neck connecting body to head -->
-          <path d="M 282,104 Q 274,80 285,66 Q 294,55 310,58 Q 326,58 332,72 Q 338,84 332,104 Z"
-            fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
-
-          <!-- Rainbow mane flowing down neck -->
-          <path d="M 312,34 Q 330,54 328,76 Q 326,94 318,106 Q 312,114 308,114" fill="#ff2222" stroke="none"/>
-          <path d="M 317,33 Q 336,54 334,76 Q 332,95 324,106 Q 318,115 314,115" fill="#ff8800" stroke="none"/>
-          <path d="M 322,32 Q 342,54 340,77 Q 338,96 330,107 Q 324,116 320,116" fill="#ffff00" stroke="none"/>
-          <path d="M 327,33 Q 348,55 346,79 Q 344,98 336,108 Q 330,118 326,118" fill="#00ee44" stroke="none"/>
-          <path d="M 331,35 Q 353,58 351,82 Q 349,101 341,111 Q 335,120 331,120" fill="#00ccff" stroke="none"/>
-          <path d="M 335,38 Q 358,62 356,86 Q 354,105 346,115 Q 340,124 336,124" fill="#cc00ff" stroke="none"/>
-          <!-- Mane outline -->
-          <path d="M 312,34 Q 358,62 356,86 Q 353,108 336,122" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- Big round cartoon head -->
-          <circle cx="300" cy="62" r="34" fill="url(#unicorn-body)" stroke="#000" stroke-width="3"/>
-
-          <!-- Second eye (far side) -->
-          <ellipse cx="313" cy="60" rx="11" ry="12" fill="white" stroke="#000" stroke-width="2.5"/>
-          <circle cx="313" cy="61" r="7" fill="#8800cc"/>
-          <circle cx="313" cy="61" r="3.5" fill="#000"/>
-          <circle cx="316" cy="57" r="2.5" fill="white"/>
-
-          <!-- Pointy ear -->
-          <polygon points="320,34 329,16 338,34" fill="url(#unicorn-body)" stroke="#000" stroke-width="2.5"/>
-          <polygon points="322,34 329,20 336,34" fill="#ffccee" stroke="none"/>
-
-          <!-- Spiral gold horn (positioned at the forehead, front of face) -->
-          <polygon points="282,34 274,4 290,4" fill="#ffd700" stroke="#000" stroke-width="2.5"/>
-          <path d="M 278,26 Q 284,16 287,8" fill="none" stroke="#ff9900" stroke-width="2" stroke-linecap="round"/>
-          <path d="M 281,30 Q 286,22 289,14" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Horn glow -->
-          <polygon points="282,34 274,4 290,4" fill="none" stroke="#ffff88" stroke-width="1.5" filter="url(#hot-glow)" opacity="0.9"/>
-
-          <!-- Big cute cartoon eye -->
-          <ellipse cx="287" cy="60" rx="14" ry="15" fill="white" stroke="#000" stroke-width="2.5"/>
-          <circle cx="287" cy="61" r="10" fill="#8800cc"/>
-          <circle cx="288" cy="61" r="5.5" fill="#000"/>
-          <circle cx="292" cy="56" r="3.5" fill="white"/>
-          <circle cx="283" cy="65" r="1.8" fill="white" opacity="0.8"/>
-
-          <!-- Eyelashes -->
-          <path d="M 275,49 Q 280,43 287,45" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 285,44 Q 289,38 295,42" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 295,46 Q 301,42 303,47" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
-
-          <!-- Rosy cheek -->
-          <circle cx="274" cy="72" r="9" fill="#ff69b4" opacity="0.55"/>
-
-          <!-- Little smile -->
-          <path d="M 279,78 Q 286,86 293,78" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
-
-          <!-- Nostril dot -->
-          <ellipse cx="275" cy="70" rx="3" ry="2" fill="#ffccdd" stroke="#cc88aa" stroke-width="1"/>
-
-          <!-- Sparkles around unicorn -->
+          <!-- ── FIZZING LIGHTNING BOLT between antenna balls ── -->
           <g filter="url(#hot-glow)">
-            <circle cx="412" cy="78"  r="5" fill="#ffff00"/>
-            <circle cx="260" cy="38"  r="4" fill="#00ffff"/>
-            <circle cx="420" cy="118" r="3" fill="#ff69b4"/>
-            <circle cx="258" cy="130" r="3" fill="#ffee00"/>
-            <circle cx="418" cy="145" r="2" fill="#00ffff"/>
+            <!-- Zigzag electric arc -->
+            <polyline points="189,4 198,0 193,7 202,2 197,9 207,3 201,10 211,5 206,11 215,5 224,11 219,5 229,10 223,3 233,9 228,2 238,7 243,4"
+                      fill="none" stroke="#ffee00" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Fizz sparks along the bolt -->
+            <circle cx="202" cy="2"  r="2.8" fill="#00ffff"/>
+            <circle cx="215" cy="11" r="2.8" fill="#ff69b4"/>
+            <circle cx="228" cy="2"  r="2.8" fill="#00ffff"/>
+            <circle cx="215" cy="4"  r="3.5" fill="#ffffff" opacity="0.85"/>
+            <!-- Extra arc flash above -->
+            <polyline points="195,3 205,-2 210,5 220,-1 225,6 235,1 243,4"
+                      fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          </g>
+
+          <!-- ── SPARKLES around robot ── -->
+          <g filter="url(#hot-glow)">
+            <circle cx="96"  cy="28"  r="5" fill="#ffff00"/>
+            <circle cx="334" cy="24"  r="4" fill="#00ffff"/>
+            <circle cx="86"  cy="100" r="3" fill="#ff69b4"/>
+            <circle cx="344" cy="96"  r="3" fill="#ffee00"/>
+            <circle cx="95"  cy="158" r="3" fill="#00ffff"/>
+            <circle cx="335" cy="154" r="3" fill="#ff69b4"/>
+            <circle cx="215" cy="182" r="3" fill="#ffee00"/>
+            <circle cx="148" cy="168" r="2" fill="#ff00ff"/>
+            <circle cx="282" cy="168" r="2" fill="#00ffff"/>
           </g>
         </svg>
       </div>
