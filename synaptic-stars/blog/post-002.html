@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Barney's BinDaRoids Build Journal — from 'I have an idea' to a live game on the internet. Every problem, every fix, every decision explained in plain English." />
+  <title>Barney's BinDaRoids: Build Journal | Misadventures in Vibing | Synaptic Stars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sound-control" role="region" aria-label="Sound controls">
+    <button id="sound-toggle" class="sound-btn" aria-pressed="false" aria-label="Toggle site sounds on or off">
+      <span class="sound-icon" aria-hidden="true">&#128266;</span>
+      <span class="sound-label">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <header class="post-header" role="banner">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="index.html">Blog</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">BinDaRoids Build Journal</li>
+      </ol>
+    </nav>
+    <div class="post-header-content">
+      <div class="post-meta-top">
+        <span class="post-ep-badge">EP. 002</span>
+        <span class="post-date-top">MARCH 2026</span>
+      </div>
+      <h1 class="post-title">Barney's BinDaRoids: Build Journal</h1>
+      <p class="post-subtitle">From "I have an idea" to a live game on the internet. Every problem, every fix, and the reason why things needed changing — in plain English.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="post-main">
+    <div class="post-container">
+
+      <article class="post-content" aria-label="Blog post content">
+
+        <p class="post-intro">
+          This is the behind-the-scenes story of building Barney's BinDaRoids — a custom browser game playable on any phone, tablet or computer, with a live global leaderboard. No app store. No downloads. Just a link.
+        </p>
+
+        <p>
+          It was built entirely using AI (Claude Code), with a non-developer directing the decisions. Every problem that came up, every fix applied, and the reason <em>why</em> things needed changing is documented here — in plain English.
+        </p>
+
+        <h2>Entry 1 — The Brief</h2>
+
+        <p>
+          <strong>What we wanted:</strong> a web-based arcade game based on the classic <em>Asteroids</em> formula, but with personality. The ship would be Barney's bin wagon. The asteroids would be household rubbish — wheelie bins, recycling bins, black bags, old tellies. A bonus enemy rat ship would fly across occasionally for big points. Retro arcade visuals, chiptune music, sound effects, increasing difficulty per level, and it had to work on mobile, tablet and desktop without any installation.
+        </p>
+
+        <p>
+          <strong>Why a browser game?</strong> Browser games run on absolutely any device with a web browser. No app store approval. No "only works on Android." You send someone a link and they're playing in seconds. For something fun and shareable, it's the ideal format.
+        </p>
+
+        <p>
+          <strong>The core technology chosen:</strong>
+        </p>
+        <ul class="post-list">
+          <li>A single HTML file containing everything — the visuals, the sounds, the game logic, all in one</li>
+          <li>Canvas-based drawing (the game draws every single frame itself, like a flipbook, 60 times per second)</li>
+          <li>Web Audio API for synthesised chiptune music and sound effects — no audio files needed, all generated mathematically on the fly</li>
+          <li>Everything self-contained so it could be hosted anywhere for free</li>
+        </ul>
+
+        <h2>Entry 2 — Getting the Game Running</h2>
+
+        <p>
+          <strong>What was built first:</strong> the complete game in one session — the bin wagon ship (drawn programmatically as a green truck with Barney's face), five types of rubbish asteroid, the rat ship bonus enemy, particle explosion effects, floating score popups, a starfield background, chiptune music, and all the sound effects.
+        </p>
+
+        <p>
+          <strong>Why draw everything in code rather than use images?</strong> Images would need to be hosted separately, loaded at the right time, and managed as files. Code-drawn graphics are instant, scale to any screen size perfectly, and mean the entire game is genuinely one file. The retro look also suits the arcade aesthetic.
+        </p>
+
+        <p>
+          <strong>Why synthesise the music in code?</strong> Same reason — no audio files to host or load. The Web Audio API can generate waveforms mathematically. Square waves for the melody (classic 8-bit sound), sawtooth waves for the bass, noise bursts for explosions and thrust. Zero loading time.
+        </p>
+
+        <p>
+          <strong>An interesting design constraint:</strong> the ship had to <em>feel</em> like a bin wagon — heavy, a bit slow to react, satisfying when it finally gets moving. Early physics used acceleration that built up over time, which created that tank-like feel.
+        </p>
+
+        <h2>Entry 3 — The Play Again Button Broke</h2>
+
+        <p>
+          <strong>The problem:</strong> after a game over, the Play Again button stopped working. Clicking it did nothing.
+        </p>
+
+        <p>
+          <strong>Why it broke — explained simply:</strong> imagine a timer that counts down to zero, and when it hits zero it's supposed to show a "Game Over" screen <em>once</em>. The bug was that the timer hit zero, showed the screen, but the condition checking "has the timer hit zero?" was still true every frame after that. So every frame (60 times a second), the game was rebuilding the Game Over screen from scratch — including the button — destroying the button that had just been set up a fraction of a second earlier. By the time your finger reached to tap it, it had already been replaced thousands of times.
+        </p>
+
+        <p>
+          <strong>The fix:</strong> before calling the "show game over screen" function, immediately flip the game's internal state to a new mode called "over" — a final resting state that the timer condition never checks again. The screen gets built exactly once, the button stays intact, and clicking it works.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>The lesson:</strong> game loops run constantly. Any code that <em>should</em> run once needs an explicit "I've already done this" flag, otherwise it runs every frame forever.
+          </div>
+        </div>
+
+        <h2>Entry 4 — Adding a High Score Leaderboard</h2>
+
+        <p>
+          <strong>What we wanted:</strong> a global leaderboard — not just local scores saved on your own device, but a real shared table where anyone in the world who plays can appear. After game over, you type your name, it saves to a database, and you see the top 10 alongside yours.
+        </p>
+
+        <p>
+          <strong>The technology chosen — Supabase:</strong> Supabase is a free online database service. Think of it like a spreadsheet in the cloud that your game can read from and write to. The game sends your name, score, and level to Supabase after every game over. When the leaderboard loads, it asks Supabase for the top 10 scores, sorted highest first.
+        </p>
+
+        <p>
+          <strong>The security setup required:</strong> databases need rules about who can do what. For this game:
+        </p>
+        <ul class="post-list">
+          <li>Anyone can <em>read</em> the scores (so the leaderboard is public)</li>
+          <li>Anyone can <em>write</em> a new score (so players can submit)</li>
+          <li>Nobody can <em>delete or edit</em> other people's scores</li>
+        </ul>
+        <p>
+          These rules are called Row Level Security policies. Without them, the database rejects all requests by default — a sensible "deny everything until you explicitly allow it" approach.
+        </p>
+
+        <p>
+          <strong>Why Supabase rather than something else?</strong> It has a generous free tier, a clean interface for setting up tables, and a JavaScript library that the game can load directly from the internet without any installation. The whole integration is about 20 lines of code.
+        </p>
+
+        <h2>Entry 5 — GitHub Pages: The Publishing Problem</h2>
+
+        <p>
+          <strong>What we wanted:</strong> publish the game to a public URL so anyone with the link can play it. GitHub Pages is a free hosting service that turns a code repository into a live website.
+        </p>
+
+        <p>
+          <strong>The problem that appeared:</strong> after enabling GitHub Pages in the settings, the button was greyed out with a message: <em>"Upgrade or make this repository public to enable Pages."</em>
+        </p>
+
+        <p>
+          <strong>Why it happened:</strong> GitHub's free tier only allows GitHub Pages on <em>public</em> repositories. The game's code repository was set to private (hidden from the internet), which blocked the hosting service entirely.
+        </p>
+
+        <p>
+          <strong>The decision:</strong> make the repository public. This meant anyone could see the source code of the game — but for a fun browser game with no sensitive data, that's completely fine. The trade-off: free hosting forever vs. keeping code private (which would require a paid plan).
+        </p>
+
+        <p>
+          <strong>What "public repository" actually means:</strong> the code is visible if someone specifically goes looking for it. The game's URL stays the same. Players just click the link and play — they never see the code. It's the same as how most open-source software works.
+        </p>
+
+        <h2>Entry 6 — The Leaderboard That Wouldn't Show</h2>
+
+        <p>
+          <strong>The problem:</strong> even after Supabase was configured with real credentials, the leaderboard screen would either show a "Connect Supabase" message (wrong — it <em>was</em> connected) or go completely blank after submitting a name.
+        </p>
+
+        <p>
+          Two separate bugs were causing this.
+        </p>
+
+        <p>
+          <strong>Bug 1 — Wrong order of checks:</strong> the code was doing things in this order:
+        </p>
+        <ol class="post-list">
+          <li>Show the leaderboard screen (with a "Loading..." message)</li>
+          <li>Go off to the internet to fetch scores (this takes a moment)</li>
+          <li><em>While waiting</em>, check whether Supabase is even connected</li>
+        </ol>
+        <p>
+          Step 3 should have happened <em>before</em> step 2. By the time the check ran, the internet fetch had already started. If the connection check said "not connected," the code tried to update a "Loading..." text on screen — but by then, the screen layout might have shifted and that piece of text no longer existed where the code expected it. The result: a silent crash, nothing displayed.
+        </p>
+        <p>
+          <strong>The fix:</strong> move the connection check to <em>before</em> the internet fetch. If not connected, immediately show the local score. If connected, <em>then</em> go fetch scores.
+        </p>
+
+        <p>
+          <strong>Bug 2 — The Supabase library not loading:</strong> the Supabase JavaScript code is loaded from an external CDN (a delivery network on the internet). If that CDN was slow or the browser blocked it, the game would start without Supabase available at all — and silently fall back to "not connected" mode with no error shown to the player.
+        </p>
+        <p>
+          <strong>The fix for reliability:</strong> add null safety checks throughout — any time the code tries to update the screen after an internet operation, it first confirms the screen element still exists before touching it.
+        </p>
+
+        <h2>Entry 7 — Mobile Controls: The D-Pad Problem</h2>
+
+        <p>
+          <strong>The original mobile controls:</strong> five circular buttons arranged like a cross — left, right, up (thrust), down (brake), and a fire button. Functional, but awkward. Your thumb had to hit precise small targets while also watching the screen. Changing direction meant lifting your thumb, repositioning, and pressing a different button.
+        </p>
+
+        <p>
+          <strong>Why this was genuinely hard to use:</strong> the original Asteroids cabinet had a physical joystick with tactile feedback — you could feel which way you were pushing without looking. On a touchscreen, there's no physical reference point. Your thumb drifts. You think you're pressing "thrust" but you've drifted onto "right." The game gets frustrating.
+        </p>
+
+        <p>
+          <strong>The solution — a virtual joystick:</strong> replace the five buttons with a single circle. You press anywhere inside it and drag in the direction you want to go. Push up-left to rotate left while thrusting. Push down to brake. The position of your thumb within the circle is read continuously, and the game responds proportionally.
+        </p>
+
+        <p>
+          <strong>Why this works better:</strong> your thumb always stays in the same zone — the joystick base. There's no need to lift and reposition. Diagonal inputs (thrust while turning) happen naturally. The game becomes much more about the action on screen and much less about finding the right button.
+        </p>
+
+        <p>
+          The fire button was kept as a separate button on the right side, because shooting is a deliberate separate action and benefits from a dedicated tap.
+        </p>
+
+        <p>
+          <strong>How the joystick knows what you're doing:</strong> the game tracks the distance and direction from the joystick's centre to where your thumb currently is. Past a small dead zone (to ignore accidental micro-movements), it translates the position into left/right/up/down signals — the same signals the keyboard arrow keys send on desktop.
+        </p>
+
+        <h2>Entry 8 — Ship Speed: From Physics Simulation to Feel</h2>
+
+        <p>
+          <strong>The original ship physics:</strong> classic Asteroids uses real momentum simulation. Press thrust and you <em>add</em> to your current speed in that direction. Release thrust and you drift. In the original game, this is the whole point — managing your drift is the skill.
+        </p>
+
+        <p>
+          <strong>Why it wasn't working well here:</strong> on a small touch screen with a virtual joystick, managing momentum adds a layer of difficulty that fights the controls rather than complementing them. You'd thrust to avoid a bin, release the joystick, and continue drifting toward another bin that appeared from a different direction. The ship felt out of control.
+        </p>
+
+        <p>
+          <strong>The change:</strong> switch from <em>accumulating</em> speed to <em>constant</em> speed. When thrust is active, the ship moves at exactly 4 pixels per frame in the direction it's facing — no more, no less. When thrust is released, it coasts briefly (the existing speed fades quickly) and then stops. There's no momentum to manage.
+        </p>
+
+        <p>
+          <strong>What this changes about the game feel:</strong> the ship becomes more predictable. You press toward something and it goes there. You release and it stops shortly after. The skill shifts from physics management to navigation and aim — which works better on a touch screen.
+        </p>
+
+        <p>
+          The brake button still exists and now acts as an emergency stop (faster fade), useful when you're about to overshoot into a bin.
+        </p>
+
+        <h2>Entry 9 — Mobile Viewport: Portrait and Landscape Inconsistency</h2>
+
+        <p>
+          <strong>The problem:</strong> on mobile phones, switching between portrait (holding the phone upright) and landscape (holding it sideways) should resize the game to fill the new screen shape. Sometimes it worked. Sometimes the game canvas stayed the old size, leaving black bars or cut-off edges. On iPhones specifically, the game could be the wrong height because of the browser's address bar eating into the screen space.
+        </p>
+
+        <p>
+          <strong>Why this happens — explained simply:</strong> a phone screen's "available space" is not simply its physical dimensions. The browser's address bar, the iOS home indicator bar at the bottom, and the notch cut-out on newer iPhones all take chunks out of the usable area. The web platform has evolved different ways to express "how much screen is actually available" and they don't always agree:
+        </p>
+
+        <ul class="post-list">
+          <li><code>100vh</code> — 100% of the viewport height. On iOS Safari, this can include space behind the address bar that isn't actually visible. Classic source of content being cut off at the bottom.</li>
+          <li><code>100svh</code> — "small viewport height" — always the <em>smallest</em> guaranteed visible area, with all browser chrome showing. This is what we switched to for the body element, so the game never gets taller than what's actually shown.</li>
+          <li><code>visualViewport</code> API — a more modern JavaScript interface that reports the true visible rectangle in real time, updating as the keyboard appears, as orientation changes, as the browser chrome hides/shows. The resize function now uses this if available.</li>
+        </ul>
+
+        <p>
+          <strong>The orientation change fix:</strong> when a phone rotates, the browser fires an <code>orientationchange</code> event. The game listens for this and triggers a resize — but with a 120 millisecond delay. Why the delay? The browser doesn't instantly finish the rotation animation. If you resize the canvas the moment the event fires, you measure the <em>old</em> dimensions mid-rotation. Waiting 120ms lets the browser settle before measuring.
+        </p>
+
+        <p>
+          <strong>The notch fix (<code>viewport-fit=cover</code>):</strong> on iPhones with a notch (the cut-out at the top) and a home bar (the swipe indicator at the bottom), the game's touch controls — the joystick and fire button — could be hidden behind these physical features when holding the phone sideways. Adding <code>viewport-fit=cover</code> to the page settings tells the browser to extend content behind the notch, and then using safe area inset values in CSS pushes the controls just far enough inward to clear the notch and home bar.
+        </p>
+
+        <h2>Entry 10 — Version Numbers: Knowing What's Live</h2>
+
+        <p>
+          <strong>The problem that prompted this:</strong> after making changes and pushing them to GitHub, it wasn't clear whether the live game on GitHub Pages was the old version or the new version. GitHub Pages has a deployment delay of 1–2 minutes, and browser caching can make old versions stick around even after the new one is live.
+        </p>
+
+        <p>
+          <strong>The fix:</strong> add a version number (v1.1) to the main menu screen. From now on, every time changes are deployed, the version number increments (v1.2, v1.3, etc.). If the number on screen matches what was just deployed, the latest version is live. If it still shows an old number, either GitHub Pages hasn't finished deploying yet, or the browser has cached the old page — a hard refresh (<code>Ctrl+Shift+R</code> on desktop, or close and reopen on mobile) will clear it.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Why version numbers matter:</strong> without them, you're guessing. With them, you have a single visible confirmation that the correct code is running. It takes five seconds to add and saves minutes of confusion every time something is deployed.
+          </div>
+        </div>
+
+        <h2>Summary: Every Problem and Its Fix</h2>
+
+        <div class="post-table-wrap" role="region" aria-label="Summary table of bugs and fixes" tabindex="0">
+          <table class="post-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Problem</th>
+                <th>Root Cause</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Play Again button did nothing</td>
+                <td>Game loop rebuilt the button 60× per second, destroying it</td>
+                <td>Set game state to "over" before showing screen, so it only builds once</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>No global leaderboard</td>
+                <td>No database connected</td>
+                <td>Integrated Supabase free-tier database with read/write policies</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>GitHub Pages wouldn't enable</td>
+                <td>Repository was private (free tier requires public)</td>
+                <td>Made repository public</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Leaderboard showed "Connect Supabase" despite being connected</td>
+                <td>Connection check ran <em>after</em> async database fetch, in wrong order</td>
+                <td>Moved connection check to before the fetch</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Leaderboard went blank after name submit</td>
+                <td>Screen element queried after async gap may not exist</td>
+                <td>Added null safety checks; restructured async order</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Mobile d-pad controls too hard to use</td>
+                <td>Small fixed buttons with no tactile reference</td>
+                <td>Replaced with virtual joystick; drag direction = ship direction</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Ship felt too fast and hard to control</td>
+                <td>Accumulating momentum physics</td>
+                <td>Switched to constant set speed; ship stops quickly on release</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Canvas wrong size in portrait/landscape on mobile</td>
+                <td>iOS viewport height includes hidden browser chrome</td>
+                <td>Used <code>100svh</code>, <code>visualViewport</code> API, orientation listener with delay</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Touch controls hidden behind iPhone notch/home bar</td>
+                <td>Controls positioned without notch awareness</td>
+                <td>Added <code>viewport-fit=cover</code> and safe area inset CSS</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Couldn't tell if latest version was live</td>
+                <td>No version indicator in the game</td>
+                <td>Added version number to main menu, increment on each deploy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Things That Went Well From the Start</h2>
+
+        <ul class="post-list">
+          <li><strong>Single-file architecture</strong> — having everything in one file made the whole project easy to move, share, deploy, and understand. No build process, no dependencies to install, no configuration files.</li>
+          <li><strong>Canvas-based rendering</strong> — drawing everything in code meant no asset management, instant loading, and perfect scaling to any screen.</li>
+          <li><strong>Synthesised audio</strong> — no audio files to host, no loading delays, and the chiptune aesthetic was built in from the start rather than bolted on.</li>
+          <li><strong>Supabase free tier</strong> — zero cost, generous limits for a game with this scale, and the JavaScript library just works with a link.</li>
+        </ul>
+
+        <h2>What This Project Demonstrates</h2>
+
+        <p>
+          You don't need to be a developer to ship a working game. You need:
+        </p>
+
+        <ol class="post-list">
+          <li>A clear brief (what should it look, feel, and do?)</li>
+          <li>A feedback loop (play it, find what's wrong, describe it plainly)</li>
+          <li>Persistence when something breaks (every bug here had a logical cause and a fix)</li>
+          <li>A system for knowing when your fix is live (version numbers)</li>
+        </ol>
+
+        <p>
+          The technology changes rapidly. The process of <em>describing what you want, testing it, and iterating</em> doesn't.
+        </p>
+
+        <div class="post-sign-off">
+          <p>— Barney, Non-Dev, Accidental Asteroid Blaster</p>
+          <p class="sign-off-emoji" aria-hidden="true">&#129302; &#9889; &#127758;</p>
+        </div>
+
+      </article>
+
+      <!-- Post navigation -->
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="post-001.html" class="post-nav-prev" aria-label="Previous post: I Made a Video Game and I Can't Code">
+          <span aria-hidden="true">&#8592;</span> PREVIOUS
+        </a>
+        <a href="index.html" class="post-nav-all">ALL POSTS</a>
+        <a href="post-003.html" class="post-nav-next" aria-label="Next post: Building the Lair">
+          NEXT <span aria-hidden="true">&#8594;</span>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-title">SYNAPTIC STARS RETRO UNIVERSE</p>
+      <p class="footer-copy">&copy; 2026 Synaptic Stars &bull; Made with vibes, Claude &amp; chaos</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
+        <a href="https://synapticstar101.github.io/Barneys-bins/" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/sounds.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

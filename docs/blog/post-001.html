@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Day Zero: What Have I Done? — The origin story of building retro games with zero coding experience and Claude AI." />
-  <title>Day Zero: What Have I Done? | Misadventures in Vibing | Synaptic Stars</title>
+  <meta name="description" content="I Made a Video Game and I Can't Code. Here's Exactly How. — A first-timer's honest account of vibe coding: the prompts, the surprises, the bugs, and what I learned along the way." />
+  <title>I Made a Video Game and I Can't Code. Here's Exactly How. | Misadventures in Vibing | Synaptic Stars</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/blog.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,7 +28,7 @@
         <li aria-hidden="true">/</li>
         <li><a href="index.html">Blog</a></li>
         <li aria-hidden="true">/</li>
-        <li aria-current="page">Day Zero</li>
+        <li aria-current="page">I Made a Video Game</li>
       </ol>
     </nav>
     <div class="post-header-content">
@@ -36,8 +36,8 @@
         <span class="post-ep-badge">EP. 001</span>
         <span class="post-date-top">MARCH 2026</span>
       </div>
-      <h1 class="post-title">Day Zero: What Have I Done?</h1>
-      <p class="post-subtitle">The origin story. Where it all began. Where I had absolutely no idea what I was getting into.</p>
+      <h1 class="post-title">I Made a Video Game and I Can't Code. Here's Exactly How.</h1>
+      <p class="post-subtitle">A first-timer's honest account of vibe coding — the prompts, the surprises, the bugs, and what I learned along the way.</p>
     </div>
   </header>
 
@@ -46,106 +46,474 @@
 
       <article class="post-content" aria-label="Blog post content">
 
-        <p class="post-intro">
-          Let me paint you a picture. It's a Tuesday evening. I'm sitting at my desk, mildly bored, mildly over-caffeinated, and mildly convinced that I, a person who has never written a line of code in their professional life, should make a video game.
+        <h2>Where It Started</h2>
+
+        <p>
+          I had an idea for a game. Nothing groundbreaking — just something that made me laugh. A cheerful bin man called Barney, driving his wagon down a street full of potholes, angry residents, and rats. Very British. Very silly. Something I'd genuinely want to play for five minutes.
         </p>
 
         <p>
-          Reasonable? No. Possible? Well, that's where it gets interesting.
-        </p>
-
-        <h2>The Dangerous Question</h2>
-
-        <p>
-          I had been hearing a lot about "vibe coding" — this idea that you could describe what you wanted to build to an AI and it would help you actually build it. Not just explain concepts. Not just write documentation. <em>Actually build the thing.</em>
+          The problem? I can't code. Not even a little.
         </p>
 
         <p>
-          So I opened Claude and typed, with all the casual confidence of someone who has absolutely no idea what they're about to get themselves into:
+          I'd heard people talking about "vibe coding" — the idea that you describe what you want to an AI in plain English and it writes the actual program for you. I was sceptical. Surely you'd end up with something clunky and half-finished? Something that sort of worked but didn't really <em>feel</em> like anything?
+        </p>
+
+        <p>
+          I decided to find out.
+        </p>
+
+        <h2>The First Prompt — Word for Word</h2>
+
+        <p>
+          Here's exactly what I typed. No edits. This is it:
         </p>
 
         <blockquote class="post-quote">
-          "Hey, can you help me make a retro endless runner type game but with bins? Like where you're dodging and collecting wheely bins?"
+          "can you vibe code a 2d pixel art game that is about barney the bin man who drives a wagon and has to negotiate pot holes, angry residents, rats, and ever increasing amounts of rubbish in the streets. use whatever imaging tools you have access to that can make endearing npc characters and make barney a large but friendly character in hi vis outfit - jeans , red and white converse and a shock of brown hair"
         </blockquote>
 
         <p>
-          There was a pause. (There wasn't, really — Claude replied instantly. But in my memory, there was a pause, and somewhere in a server farm, a very patient AI took a deep breath.)
+          No capital letters. No technical terminology. No specification of what programming language, what framework, what file structure. Just a description of a feeling — <em>"endearing NPC characters"</em> — and a visual image of a character I could see in my head.
         </p>
 
         <p>
-          Then it said yes. And then everything changed.
+          What came back genuinely surprised me.
         </p>
 
-        <h2>Step One: The Part Where I Discovered I Needed Things I Didn't Have</h2>
+        <h2>What Came Out of That Prompt</h2>
 
         <p>
-          Claude started explaining what we'd need. A code editor (VSCode, apparently — "it's free and excellent"). Node.js (what?). Git (come again?). A GitHub account (okay I think I'd heard of that).
+          Within minutes I had a working, playable browser game. One file. Open it, play it instantly. No downloads, no installs.
         </p>
 
         <p>
-          I had none of these things. I downloaded all of them within about 15 minutes, understanding approximately none of what I was installing or why. The terminal opened for the first time and I genuinely felt like I'd accidentally accessed the Matrix.
+          Barney was there — a big friendly face visible through the cab window of a green bin lorry, brown messy hair, hi-vis jacket. Three lanes of road. Wheelie bins to collect. Potholes to dodge. Mrs Miggins in her dressing gown. Mr Grumpy waving his newspaper. Rats darting across the road. A score counter. Lives. Sound effects. Scrolling buildings. Spinning wheels on the wagon. Even exhaust smoke puffing out the back.
+        </p>
+
+        <p>
+          All of that. From one paragraph.
+        </p>
+
+        <p>
+          I sat there for a moment just staring at it. I hadn't asked for spinning wheels. I hadn't asked for exhaust smoke. I hadn't asked for Mrs Miggins to have a speech bubble that said "OI!" I hadn't asked for the buildings to scroll at a different speed to the road to create a sense of depth. The AI just... made sensible decisions.
         </p>
 
         <div class="post-callout post-callout--tip">
           <span class="callout-icon" aria-hidden="true">&#128161;</span>
           <div>
-            <strong>Non-dev tip:</strong> The terminal is not as scary as it looks. It's just a very minimalist way to tell your computer what to do. You will type things in it and feel extremely powerful. Until you break something. Then you will feel extremely small.
+            <strong>Lesson 1:</strong> The AI fills in the gaps. You describe the vibe. It figures out the implementation. Trust it on the technical details — that's its job.
           </div>
         </div>
 
-        <h2>Step Two: The First Line of Code</h2>
+        <h2>Building It Out — Levels, Bonus Rounds, and Hyperspeed</h2>
 
         <p>
-          Claude walked me through creating a project folder, initialising it (I still don't fully know what this means), and creating the first file. An HTML file. A canvas. A spaceship made of a single triangle.
+          Once the basic game was working I wanted it to feel more like a real arcade experience. Not just "drive forever until you die" — proper level progression. Something to work toward. A sense of escalation.
         </p>
 
         <p>
-          I hit save, opened the file in my browser, and there it was. A tiny triangle on a black background.
+          I asked for levels that ramped up in difficulty over time, a bonus round where the road fills with gold bins instead of obstacles, and a final hyperspeed stage where everything goes mad.
         </p>
 
         <p>
-          Reader, I stared at that triangle for a full minute. That triangle was mine. I had made that triangle happen. I, a person who last year thought JavaScript was something to do with coffee, had caused a triangle to exist on a screen.
-        </p>
-
-        <h2>Step Three: Chaos, Momentum, and the Git Incident</h2>
-
-        <p>
-          Things progressed. The lanes appeared. Barney started running. Bins scrolled toward him from the right. I hit Enter and he honked. I didn't know why honking was a feature. I still don't fully know. But it is absolutely the best part of the game, and I will die on that hill.
+          What came back was a proper structure: levels advancing every 30 seconds, each one faster than the last. Level 4 became the Bonus Round — a 30-second window where only gold bins appeared on the road, obstacles cleared, and the whole thing felt like a reward for surviving. Level 9 became Hyperspeed, with a fanfare and a thousand-point bonus as the game hit its maximum pace.
         </p>
 
         <p>
-          Then I tried to "save my work to Git" as Claude suggested. I didn't really understand what Git was. I clicked some things in VSCode. I typed some commands in the terminal. I pushed something somewhere.
+          This is where I started to understand something important about vibe coding: you don't have to ask for everything at once, and you don't have to know how something should be implemented. "Add levels that get progressively harder, a bonus round, and a mad final level" is enough. The AI built a proper time-based progression system with correct maths, UI indicators, and special handling for each stage — none of which I specified.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 2:</strong> Describe the experience you want, not the system behind it. "A bonus round that feels like a reward" produces better results than trying to specify how level transitions should work. The AI knows how games work.
+          </div>
+        </div>
+
+        <h2>The Rat That Looked Like a Bird</h2>
+
+        <p>
+          Here's a good one.
         </p>
 
         <p>
-          I still don't fully know what I pushed or where it went. But it went somewhere, and the next day it was still there, and I'm calling that a win.
+          After a few sessions of play I noticed something odd. The rats that darted across the road looked... wrong. Not rat-shaped. More like a small grey smudge. Birdlike, almost.
+        </p>
+
+        <p>
+          I asked for the rat sprite to be redesigned to actually look like a rat.
+        </p>
+
+        <p>
+          The commit message from that fix tells the full story better than I can:
+        </p>
+
+        <blockquote class="post-quote">
+          "Previous sprite resembled a small grey bird. New design has: long protruding snout, near-black whiskers extending left from snout, red nose at snout tip, small red eye, large rounded ear with deep-pink border and pale-pink inside, pink worm-like tail curving upward from the body, light grey belly patch, two-frame scurrying leg animation."
+        </blockquote>
+
+        <p>
+          The new rat is unmistakably a rat. Ears. Snout. Pink tail. Scurrying legs. It took one request to go from "that grey blob" to a proper character.
+        </p>
+
+        <p>
+          This might be the simplest possible illustration of what vibe coding is: you notice something looks wrong, you say so in plain English, and it gets fixed. You don't need to understand <em>why</em> the original sprite looked like a bird. You don't need to know what a "sprite array" is. You just need to be able to say "that looks like a bird, make it look like a rat."
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 3:</strong> Your eye is the quality control instrument. You don't need technical knowledge to know when something looks or feels wrong. That instinct — "this doesn't look right" — is genuinely useful in vibe coding. Use it.
+          </div>
+        </div>
+
+        <h2>The First Boss — The Rat King</h2>
+
+        <p>
+          Having played for a while I wanted something to work toward. A moment. A drama. I'd been building up through levels and I wanted a proper boss encounter — something that changed the feel of the game completely, with an entrance and a fight and stakes.
+        </p>
+
+        <p>
+          I asked for a boss: the Rat King. A giant version of the rats from the road, but crowned — a huge, grotesque rodent ruler. The fight would work differently to normal play: instead of dodging obstacles, you'd fire detergent bottle missiles back at him by pressing Space. He'd throw rubbish at you. Six direct hits to defeat him. Five hundred points as the reward.
+        </p>
+
+        <p>
+          I wanted a dramatic entrance too. An ominous screen overlay. His name appearing with pulsing text. Ominous music. The whole thing.
+        </p>
+
+        <p>
+          What came back was exactly that — and more. The Rat King was drawn in pixel art using only rectangles: a crown, enormous ears, a snout with whiskers, animated swinging arms, a pink tail, an HP bar across his chest. The intro faded the screen dark with red warning text: <em>"THE RAT KING APPROACHES..."</em> The background sky turned deep crimson-purple. A bass-heavy minor key theme kicked in. Villain speech bubbles appeared during the fight with random taunts. When you defeated him, a victory fanfare played and the game resumed.
+        </p>
+
+        <p>
+          Then immediately after that... it completely stopped working.
+        </p>
+
+        <p>
+          The controls went dead. Nothing responded. The game was stuck.
+        </p>
+
+        <p>
+          <strong>This is the other side of vibe coding that nobody talks about: sometimes it breaks immediately after you build something.</strong>
+        </p>
+
+        <p>
+          The cause, when the AI investigated, was a single undefined variable. A piece of code referenced <code>ROAD_BOT</code> — the bottom of the road — which had never actually been declared anywhere. The game hit that undefined reference and silently crashed. Invisible from the outside. Everything looked fine until it didn't. The fix was three characters: replace <code>ROAD_BOT</code> with <code>ROAD_TOP + ROAD_H</code> — the same value, calculated correctly from constants that did exist.
+        </p>
+
+        <p>
+          One undefined variable. Completely dead game. Fixed in seconds.
         </p>
 
         <div class="post-callout post-callout--warning">
           <span class="callout-icon" aria-hidden="true">&#9888;</span>
           <div>
-            <strong>Genuine warning:</strong> If you're a non-dev starting this journey — Git will confuse you. It confused me. It will feel like the computer is mad at you personally. It is not. It is just Git.
+            <strong>Lesson 4:</strong> Bugs after big additions are normal and quick to fix. When you add something substantial — a whole new game mode, a new character, a new system — something will usually break. This isn't a failure of vibe coding. It's just how software works. Describe what's broken ("the controls don't work anymore"), let the AI diagnose it, watch it get fixed. The process is fast.
           </div>
         </div>
 
-        <h2>What I Learned on Day Zero</h2>
-
-        <ul class="post-list">
-          <li>VSCode is your friend. Learn the keyboard shortcuts. It will feel like a superpower.</li>
-          <li>The terminal is not your enemy. It just looks like one.</li>
-          <li>Claude is an extraordinarily patient collaborator who will explain the same thing seventeen different ways without ever sighing at you.</li>
-          <li>There is an enormous difference between understanding code and being able to make stuff with code. You can do the latter without much of the former. (Don't tell the developers.)</li>
-          <li>The feeling of seeing something you imagined actually work on a screen is addictive. Like, <em>properly</em> addictive. I understand now why people become developers.</li>
-        </ul>
-
-        <h2>What Comes Next</h2>
+        <h2>"Is This Now Pushed and Live?"</h2>
 
         <p>
-          Barney's Bins was just the beginning. After that came BinDaRoids. After that came this website. And somewhere in all of it, I accidentally learned things. Not enough to call myself a developer. But enough to be dangerous.
+          After the Rat King was working I asked the single most non-technical question of the entire project:
+        </p>
+
+        <blockquote class="post-quote">
+          "is this now pushed and live"
+        </blockquote>
+
+        <p>
+          The answer was no — the changes had been saved locally but not published. One word from me ("yes") and it was done. Committed with a proper message, pushed, live.
         </p>
 
         <p>
-          Follow along. It gets weirder.
+          This is worth pausing on. I didn't have to learn Git. I didn't have to learn what "commit" means or what "push" means or how GitHub Pages works. I just asked "is it live?" and it sorted it.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 5:</strong> You don't need to learn the tooling. Just ask. Version control, deployment, file management — all of it can be handled by the AI if you just describe what outcome you want.
+          </div>
+        </div>
+
+        <h2>The Second Boss — Freddie the Toxic Foreman</h2>
+
+        <p>
+          The Rat King worked so well I wanted another boss. Something earlier in the game. And I had a very specific villain in mind.
+        </p>
+
+        <p>
+          Here's exactly what I asked for:
+        </p>
+
+        <blockquote class="post-quote">
+          "add a new boss level at level 3 this one is Freddie the Foreman. He is a large Fat construction worker with blue jeans a belly that sticks out from his dirty white vest a red hard had a black long villain moustache and massive ape like arms he throws large toxic waste barrels that you have to dodge or by pressing space bar they fire back at him 6 direct shots defeat him and you get 500 points before he appears announce him as Freddie the Toxic Foreman use ominous music and writing on screen like the rat king boss intro add some dialogue boxes about how he will waste you !!"
+        </blockquote>
+
+        <p>
+          Again — no technical language. Just a character description and a gameplay mechanic described in plain terms. "Press space bar, barrels fire back at him" is not a technical specification. It's just describing the experience.
+        </p>
+
+        <p>
+          Note the phrase at the end: <em>"like the rat king boss intro."</em> By this point, the Rat King intro had become the established template for how a boss entrance should feel — dramatic build-up, ominous text, music, character. I was using my own game as a reference.
+        </p>
+
+        <p>
+          What came back was Freddie. Hand-drawn in pixel art using nothing but rectangles. Red hard hat. Massive arms that swung when he threw barrels. A spectacular villain moustache with curled tips. A belly that stuck out from his vest. A dramatic multi-stage intro sequence: flickering construction zone warnings, a toxic hazard alert, his name slamming onto the screen with a bass-heavy thud, and dialogue boxes where he threatened Barney before the fight began.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 6:</strong> Once you build something you like, reference it. "Like the Rat King intro" told the AI exactly the register I wanted — dramatic, staged, with music and text — without me having to describe it all over again. Your previous work becomes part of your vocabulary.
+          </div>
+        </div>
+
+        <h2>The First Batch of Fixes — When Things Weren't Quite Right</h2>
+
+        <p>
+          This is where vibe coding gets really interesting. Because the first version of something is never perfect. And fixing things is where the collaboration really shows.
+        </p>
+
+        <p>
+          I played Freddie's level and noticed several problems. Here's what I asked for:
+        </p>
+
+        <blockquote class="post-quote">
+          "couple of things need fixing freddie the foreman needs to be slighly smaller and the barrels he throws need to harm the bin wagon unless the space bar is pressed to reflect them back at him . Also the rat king boss is apprearing directly after defeating freddie this needs to be pushed back to level 6 now so the level order is level 1,2 then freddie boss level , then bonus level , then normal level 5 , then rat king level , then normal level 6 and 7 then bring the hyper speed level to level 8"
+        </blockquote>
+
+        <p>
+          Three separate issues in one message. A sizing problem, a gameplay mechanic problem, and a level structure problem. I didn't know <em>why</em> any of these were broken. I just knew what they looked like when they were wrong.
+        </p>
+
+        <p>
+          What was actually happening under the hood:
+        </p>
+
+        <ul class="post-list">
+          <li><strong>Freddie too big</strong> — he was drawn at full size. The fix wrapped all his drawing code in a scale transform: draw at 80% size.</li>
+          <li><strong>Barrels not harming the wagon</strong> — a bug in the hit detection. The code was checking whether the barrel's X position was near pixel 80. But the wagon actually occupied pixels 45 to 215. Barrels were sailing visually through the wagon and never registering as hits.</li>
+          <li><strong>Rat King appearing too early</strong> — after defeating Freddie, the game was supposed to give you a Bonus Round (level 4) then a normal level 5, then the Rat King at level 6. Instead, the Rat King appeared immediately after Freddie. The trigger level was changed from 5 to 6.</li>
+        </ul>
+
+        <p>
+          None of this required me to understand any of it technically. I described the <em>symptoms</em>. The AI diagnosed the causes and fixed them.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 7:</strong> Describe what's wrong, not how to fix it. You are the quality control department. The AI is the engineering department. Your job is to spot that something feels off. Its job is to figure out why and correct it.
+          </div>
+        </div>
+
+        <h2>Checking the Plumbing — Collision Mechanics</h2>
+
+        <p>
+          After the fixes, I asked for a broader check:
+        </p>
+
+        <blockquote class="post-quote">
+          "check that the collission mechanics work for all levels adjust if necessary. also when the Freddie level start keep the starter dialogue on the screen longer so the player can readit"
+        </blockquote>
+
+        <p>
+          This is a slightly different kind of prompt — not "fix this specific thing I noticed" but "check this whole system for me." The AI audited the collision code, confirmed the barrel fix from the previous session had landed correctly, then extended the dialogue timing.
+        </p>
+
+        <p>
+          The original dialogue boxes were showing for about one second each. That's nowhere near enough to read two lines of text. The fix extended each box to five seconds, making it actually readable.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 8:</strong> You can ask for reviews, not just fixes. "Check this works properly" is a perfectly valid vibe coding prompt. You don't need to know what to look for. Just ask it to look.
+          </div>
+        </div>
+
+        <h2>A Weird Bug — Pressing UP Caused a Crash</h2>
+
+        <p>
+          This one was genuinely baffling from a player's perspective:
+        </p>
+
+        <blockquote class="post-quote">
+          "if you press up when in the top lane it causes a collission and loss of life , check this and fix if required"
+        </blockquote>
+
+        <p>
+          Why would pressing UP cause a collision? I wasn't hitting anything. I was at the top of the screen. There was nothing above me to hit.
+        </p>
+
+        <p>
+          The explanation, when it came back, was elegant and completely invisible to me as a player.
+        </p>
+
+        <p>
+          The game tracks two things: which lane Barney is <em>in</em> and which lane he's <em>moving towards</em>. When Barney moves between lanes, his position smoothly animates. But the "which lane am I officially in" variable only updated when Barney was within 1 pixel of the destination — which took about half a second.
+        </p>
+
+        <p>
+          During that half second, even though Barney <em>looked</em> like he was in the top lane, the game still thought he was in the middle lane. So middle-lane obstacles could still hit him. The player experienced it as "pressing UP caused a hit" because it happened right after the UP press. The cause was actually a stale variable.
+        </p>
+
+        <p>
+          The fix: instead of using the logical lane variable for collision detection, calculate which lane Barney is <em>physically closest to</em> based on his actual Y position on screen. If he looks like he's in lane 0, treat him as being in lane 0 — regardless of what the internal tracking variable says.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 9:</strong> Bugs often have a gap between the symptom and the cause. What looks like "pressing UP causes a collision" is actually "a variable doesn't update fast enough." You don't need to trace this yourself. Describe what you experienced. The AI can close the gap.
+          </div>
+        </div>
+
+        <h2>"Still Not Long Enough" — The Dialogue Problem</h2>
+
+        <p>
+          After extending the dialogue to five seconds per box, I played through the Freddie intro again and still felt rushed:
+        </p>
+
+        <blockquote class="post-quote">
+          "now make the text dialogue between freddie and barney longer so that the player can read the back and forth as it is still not long enough"
+        </blockquote>
+
+        <p>
+          The important phrase here is "back and forth." The original sequence had Freddie threatening Barney twice, then Barney responding once. That's not really a conversation. It's more of a monologue with a footnote.
+        </p>
+
+        <p>
+          The fix expanded it into four proper exchanges — each five seconds on screen, 25 seconds of drama in total:
+        </p>
+
+        <ul class="post-list">
+          <li><strong>Freddie opens:</strong> <em>"You think YOUR lot can clean up MY construction site?! HA! I've buried better bin men than you!"</em></li>
+          <li><strong>Barney replies calmly:</strong> <em>"Mornin'! Council sent me — got a report of illegal waste dumping. Nothing personal, mate. Fancy a biscuit while we sort this?"</em></li>
+          <li><strong>Freddie explodes:</strong> <em>"BISCUIT?! I'll give ya a BISCUIT!! NOBODY cleans MY SITE!!"</em></li>
+          <li><strong>Barney squares up:</strong> <em>"Right then, Freddie. Wagon's fuelled up. Flask is full. Health and Safety says this mess gets cleaned up TODAY. HONK HONK!!"</em></li>
+        </ul>
+
+        <p>
+          Actual character development. In a game about a bin man.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 10:</strong> Iterate on the feel, not just the function. "The dialogue doesn't feel long enough" and "it needs to feel like a real conversation" are completely valid creative notes. The AI understands creative direction, not just technical instructions.
+          </div>
+        </div>
+
+        <h2>"Check the Order of the Levels"</h2>
+
+        <p>
+          Near the end, I asked for a final verification of the level structure:
+        </p>
+
+        <blockquote class="post-quote">
+          "check the order of the levels and make sure it goes level 1,2 normal level 3 Freddie boss , level 4 gold bin bonus round level 5 normal , level 6 rat boss , level 7 normal level 8 hyper speed ."
+        </blockquote>
+
+        <p>
+          This caught a significant hidden bug. When you defeated Freddie, the game set your position to <code>frameCount = level × 1800</code>. At level 4, that's 7,200. The game calculates your current level as <code>1 + (7200 ÷ 1800) = 5</code>. Not 4. Level 5. The Bonus Round was being skipped entirely.
+        </p>
+
+        <p>
+          Same bug for the Rat King defeat — it was skipping level 7 and going straight to Hyperspeed.
+        </p>
+
+        <p>
+          The fix was one character: use <code>(level - 1) × 1800</code> instead of <code>level × 1800</code>. Two entire levels were silently disappearing because of a single multiplication error that had been there since the level reorder.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 11:</strong> Ask for verification, not just fixes. "Check this is working the way I expect" catches things neither of you noticed. The bug had existed since the level reorder was first done — it took a deliberate "check the order" prompt to surface it.
+          </div>
+        </div>
+
+        <h2>What I've Learned About Vibe Coding</h2>
+
+        <p>
+          Looking back across all of this, here are the things I'd tell someone who wants to try vibe coding for the first time.
+        </p>
+
+        <h3>You are the creative director. The AI is the whole technical team.</h3>
+        <p>
+          Your job is vision, taste, and feedback. The AI's job is everything else. This is a genuine collaboration, not you dictating and it obeying. It makes decisions you didn't ask for — spinning wheels, exhaust smoke, speech bubbles — and those decisions are usually good. Let them land.
+        </p>
+
+        <h3>Be specific about what it should <em>feel</em> like, not how it should <em>work</em>.</h3>
+        <p>
+          "The Rat King should feel like a proper dramatic boss encounter" produces better results than trying to specify systems you don't understand. Describe personalities. Describe experiences. Describe the moment you want the player to feel. Let the AI translate that into code.
+        </p>
+
+        <h3>Your eye is the quality control instrument.</h3>
+        <p>
+          You don't need technical knowledge to know when something looks wrong. "That rat looks like a bird" is a useful observation. "Press UP and you die somehow" is a useful bug report. Your taste and instincts are the tools you bring to this.
+        </p>
+
+        <h3>Describe symptoms, not solutions.</h3>
+        <p>
+          "Pressing UP causes a collision" is the right kind of bug report. "Change the barneyLane variable update threshold" is not something you'd ever say. Describe what you see. Let the AI figure out why.
+        </p>
+
+        <h3>Build on what you have.</h3>
+        <p>
+          "Like the Rat King intro" became useful shorthand that saved a paragraph of description. Once you've built something that works and feels right, reference it. Your own game becomes part of your design language.
+        </p>
+
+        <h3>Check your work and ask for verification.</h3>
+        <p>
+          Play the game after every change. Notice when something feels off. Ask for it to be fixed. Ask for systems to be audited. "Check the level order" found a bug that neither of us had caught during development. Asking for verification is part of the job.
+        </p>
+
+        <h3>Bugs after big additions are normal and fast to fix.</h3>
+        <p>
+          The Rat King fight broke the controls immediately. Freddie's barrels didn't hurt. The bonus round was being skipped. None of these were problems for long — each was diagnosed and fixed in minutes when described correctly. Don't be discouraged by things breaking. That's just building software.
+        </p>
+
+        <h2>The Full Journey, End to End</h2>
+
+        <ul class="post-list">
+          <li><strong>March 1</strong> — one paragraph prompt, Barney's Bins exists.</li>
+          <li><strong>March 2–3</strong> — mobile fixes, leaderboard, iOS audio, landscape layout sorted.</li>
+          <li><strong>March 3 evening</strong> — levels, bonus round, and Hyperspeed added.</li>
+          <li><strong>March 4 morning</strong> — bonus round improved, gold bins worth more. Rat sprite redesigned: was a bird, now is a rat.</li>
+          <li><strong>March 4 afternoon</strong> — The Rat King boss built from scratch. Intro, fight, speech bubbles, boss music, victory track. Then immediately crashed due to one undefined variable. Fixed in minutes. Pushed live.</li>
+          <li><strong>March 7</strong> — Freddie the Toxic Foreman added. Then: made him smaller, fixed barrel collision, fixed level ordering, checked all collision mechanics, extended dialogue timing, fixed the phantom UP lane bug, made the back-and-forth dialogue longer, verified the level order end-to-end.</li>
+        </ul>
+
+        <p>
+          That's the whole story.
+        </p>
+
+        <h2>Try It Yourself</h2>
+
+        <p>
+          If you want to try vibe coding, my honest advice:
+        </p>
+
+        <ul class="post-list">
+          <li><strong>Start smaller than you think you need to.</strong> One game mechanic. One character. One screen. Get that working, then add to it.</li>
+          <li><strong>Have a clear vision of the <em>vibe</em> before you start.</strong> Not technical specs — just know what it should feel like. Charming? Tense? Silly? That feeling will guide every prompt.</li>
+          <li><strong>Don't try to understand the code.</strong> That's not the goal. The goal is the experience of playing the thing you imagined. If it plays the way you wanted, the code worked.</li>
+          <li><strong>Iterate.</strong> The first version is a starting point, not a finished product. Every "that's not quite right" prompt makes it better.</li>
+          <li><strong>Ask questions freely.</strong> "Is this live?" "Check this works properly." "Can you explain why that happened?" All valid. All useful.</li>
+        </ul>
+
+        <p>
+          The barrier to building things — real, working, playable things — has genuinely collapsed. Barney's Bins is proof of that.
+        </p>
+
+        <p>
+          HONK HONK.
         </p>
 
         <div class="post-sign-off">
@@ -161,7 +529,7 @@
           <span aria-hidden="true">&#8592;</span> PREVIOUS
         </span>
         <a href="index.html" class="post-nav-all">ALL POSTS</a>
-        <a href="post-003.html" class="post-nav-next" aria-label="Next post: Building the Lair">
+        <a href="post-002.html" class="post-nav-next" aria-label="Next post: Barney's BinDaRoids Build Journal">
           NEXT <span aria-hidden="true">&#8594;</span>
         </a>
       </nav>

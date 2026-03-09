@@ -560,3 +560,56 @@
     align-items: flex-start;
   }
 }
+
+/* === BLOG TABLE === */
+.post-table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--neon-purple);
+  border-radius: 6px;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.post-table th {
+  background: #0d0030;
+  color: var(--neon-cyan);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--neon-purple);
+}
+
+.post-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #1a003a;
+  vertical-align: top;
+}
+
+.post-table td:first-child {
+  color: var(--neon-purple);
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  white-space: nowrap;
+}
+
+.post-table tbody tr:nth-child(even) td {
+  background: #06001a;
+}
+
+.post-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.post-table code {
+  font-size: 0.7rem;
+  color: var(--neon-cyan);
+}
