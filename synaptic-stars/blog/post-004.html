@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Barney's BinVaders Build Journal: How I vibe coded a Space Invaders tribute — five invader types, a leaderboard that outgrew Supabase, and the iOS keyboard that nearly broke me." />
+  <title>Barney's BinVaders: Build Journal | Misadventures in Vibing | Synaptic Stars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sound-control" role="region" aria-label="Sound controls">
+    <button id="sound-toggle" class="sound-btn" aria-pressed="false" aria-label="Toggle site sounds on or off">
+      <span class="sound-icon" aria-hidden="true">&#128266;</span>
+      <span class="sound-label">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <header class="post-header" role="banner">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="index.html">Blog</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">BinVaders Build Journal</li>
+      </ol>
+    </nav>
+    <div class="post-header-content">
+      <div class="post-meta-top">
+        <span class="post-ep-badge">EP. 004</span>
+        <span class="post-date-top">MARCH 2026</span>
+      </div>
+      <h1 class="post-title">Barney's BinVaders: Build Journal</h1>
+      <p class="post-subtitle">Space Invaders but make it rubbish. One character that broke everything. Five bugs disguised as one. And the iOS keyboard that staged a full mutiny.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="post-main">
+    <div class="post-container">
+
+      <article class="post-content" aria-label="Blog post content">
+
+        <h2>The Third Itch</h2>
+
+        <p>
+          By the time the Synaptic Stars website was live and the robot logo had found his final form, I had two games in the universe. A runner. An asteroid blaster. And an itch I couldn't ignore.
+        </p>
+
+        <p>
+          Space Invaders.
+        </p>
+
+        <p>
+          Not just any Space Invaders — Barney's Space Invaders. Rows of descending rubbish. Rats and bin bags and toxic barrels marching toward the bottom of the screen while Barney's refuse truck scrambles left and right trying to stop them. A pink UFO rat bonus ship floating across the top. Bunkers that get blasted apart by both sides. The whole thing.
+        </p>
+
+        <p>
+          I'd built a runner. I'd built a blaster. The grid-based invader game felt like the missing piece of the retro arcade trilogy. So I opened a new conversation and started describing.
+        </p>
+
+        <h2>Entry 1 — Describing a Classic</h2>
+
+        <p>
+          The nice thing about remaking a classic is that the blueprint already exists. I didn't need to invent the mechanics — I needed to describe them well enough that the AI understood what I meant.
+        </p>
+
+        <blockquote class="post-quote">
+          "I want to build a Space Invaders-style arcade game called Barney's BinVaders. The player controls Barney's refuse truck at the bottom of the screen, moving left and right. The enemies are rows of rubbish creatures — rats, bin bags, black rubbish bags, overflowing bins, and toxic barrels — that march left and right in formation and drop lower when they hit the sides. They fire back at you. There are four bunker-style barriers between the player and the enemies that degrade when hit. A bonus UFO rat ship floats across the top. Ten escalating difficulty levels. Everything drawn in code — no image files. Web Audio for sound — no audio files. Single HTML file. Gold border, dark background, classic arcade feel."
+        </blockquote>
+
+        <p>
+          What came back was a working Space Invaders game. First try. Five enemy types drawn entirely in canvas code, each with two animation frames. Grid movement working. The truck responding to arrow keys. Bunkers in place.
+        </p>
+
+        <p>
+          There's a specific satisfaction to a brief that's precise enough to produce something real in round one. After three games' worth of learning how to describe things properly, I was getting better at it.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 1:</strong> Describing a well-known genre gives you a shortcut. "Space Invaders mechanics" carries about thirty years of shared understanding — you don't need to invent the vocabulary from scratch. Name your references.
+          </div>
+        </div>
+
+        <h2>How the Grid Actually Works (In English)</h2>
+
+        <p>
+          One of the things I asked about early on was how the invader movement actually functioned, because I was curious. The answer was surprisingly elegant.
+        </p>
+
+        <p>
+          Rather than tracking 55 individual invader positions, the whole grid is controlled by just two numbers: how far it's drifted horizontally, and how far it's dropped vertically. Every invader's position is calculated as its starting spot plus those two offsets. When any invader — even one in the far corner — touches a screen edge, the whole grid reverses direction and drops down one step.
+        </p>
+
+        <p>
+          No individual position updates. No per-invader state. Just one pair of numbers moving the whole army at once. The simplicity of it was genuinely delightful once I understood it.
+        </p>
+
+        <p>
+          Speed worked the same way. As invaders die, the step interval recalculates: base speed multiplied by the fraction of invaders still alive. Kill more invaders, grid moves faster, automatically. That classic Space Invaders acceleration where the last few enemies are absolutely terrifying? Two lines of maths.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 2:</strong> Ask how things work. Not because you'll rewrite them, but because understanding the logic makes you dramatically better at describing what's wrong when something breaks. "The grid isn't reversing" is more useful than "the aliens aren't moving right."
+          </div>
+        </div>
+
+        <h2>Entry 2 — The Character That Broke the Universe</h2>
+
+        <p>
+          The game worked. Then I made some changes — adding a new feature, tweaking a value — and the screen went black. Nothing. Not a flicker. Just a dark canvas and silence.
+        </p>
+
+        <p>
+          I described what I was seeing:
+        </p>
+
+        <blockquote class="post-quote">
+          "The screen has gone completely black. Nothing renders at all. I haven't changed anything major — just edited a couple of values. What's happened?"
+        </blockquote>
+
+        <p>
+          After some investigation, the answer emerged: a Unicode minus sign.
+        </p>
+
+        <p>
+          Not a regular hyphen (the one on your keyboard). A typographic minus sign — the kind that copy-paste sometimes introduces from formatted text. They look identical on screen. One of them is a valid character in JavaScript arithmetic. The other is not. The parser hit the wrong one, silently failed to interpret the entire script block, and produced nothing.
+        </p>
+
+        <p>
+          A single character. Invisible difference. Total blackout.
+        </p>
+
+        <div class="post-callout post-callout--warning">
+          <span class="callout-icon" aria-hidden="true">&#9888;</span>
+          <div>
+            <strong>What actually happened:</strong> U+2212 (the proper mathematical minus sign) had snuck into the code instead of U+002D (the humble hyphen). JavaScript doesn't recognise U+2212 as an operator, so it couldn't parse the line, and since the script block was broken, the entire game script failed to execute. Zero errors in the console — just a black screen.
+          </div>
+        </div>
+
+        <p>
+          The same session also turned up a duplicate property name issue — a variable called <code>color</code> was being used twice in one object, so the invaders' column numbers were being overwritten with colour strings, which meant their positions calculated as <code>NaN</code>, which meant they appeared nowhere, which meant nothing rendered. Two different problems. Both invisible. Both trivial to fix once identified.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 3:</strong> A completely black screen usually means a JavaScript parse error — something so fundamental broke that nothing ran at all. Before assuming a logic bug, check for invisible character issues, especially if you recently pasted text from outside the code editor.
+          </div>
+        </div>
+
+        <h2>Entry 3 — Five Bugs Wearing a Coat</h2>
+
+        <p>
+          This was the session that genuinely humbled me.
+        </p>
+
+        <p>
+          The life system wasn't working. When Barney's truck got hit, something went wrong — sometimes the life counter behaved strangely, sometimes the game got stuck, sometimes input stopped working. I described it as best I could:
+        </p>
+
+        <blockquote class="post-quote">
+          "When the player gets hit, the life system seems broken. Sometimes it loses multiple lives at once. Sometimes the game freezes. Sometimes after game over, pressing a key does nothing. Something's wrong with the death sequence."
+        </blockquote>
+
+        <p>
+          What came back was a diagnosis of five separate bugs, all interacting with each other, all producing overlapping symptoms:
+        </p>
+
+        <ul class="post-list">
+          <li>A collision loop that continued running after detecting a hit instead of stopping, which corrupted game state on the same frame</li>
+          <li>A missing guard that allowed the life-loss logic to trigger multiple times simultaneously</li>
+          <li>The level-up function could activate during the death animation because there was no check blocking it</li>
+          <li>No input cooldown after game over, so pressing any key immediately restarted in a broken state</li>
+          <li>The fire button's edge detection failed after the player respawned at center</li>
+        </ul>
+
+        <p>
+          Five bugs. One symptom cluster. All fixed in a single pass once they were identified.
+        </p>
+
+        <p>
+          The thing that struck me was how a single vague symptom — "the death sequence feels broken" — was actually five separate problems that happened to all express at the same time. You can't fix "feels broken." You can fix each of the five specific things.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 4:</strong> When something "feels wrong" in a complex sequence like a death or level-change, assume there are multiple bugs, not one. Describe every symptom you can observe separately. Five precise descriptions will get you five fixes. One vague description will get you a guess.
+          </div>
+        </div>
+
+        <h2>The Pink Rat UFO and the Audio That Writes Itself</h2>
+
+        <p>
+          The bonus UFO in the original Space Invaders is a small mystery ship that occasionally crosses the top of the screen, worth big points if you hit it. For BinVaders, it became a pink rat. Obviously.
+        </p>
+
+        <p>
+          The UFO rat appears every 12 to 25 seconds (randomised), moves left or right at random, and is worth 700 points. It has its own synthesised pulsing hum while it's on screen — two slightly detuned sine waves layered together, which produces that classic wobbling UFO sound without a single audio file.
+        </p>
+
+        <p>
+          Every sound in the game is generated mathematically. Player shots use square waves. Invader fire uses sawtooth waves. Explosions blend white noise with sine tones. Level announcements play 8-note melodies. The whole soundtrack exists in code — no files to load, no latency, works on any device with a browser.
+        </p>
+
+        <p>
+          I'd learned this approach from BinDaRoids. It still delights me that an entire game's audio can be synthesised from waveform mathematics and a few lines of Web Audio API.
+        </p>
+
+        <h2>Entry 7 — The URL That Broke a String</h2>
+
+        <p>
+          A long deployment URL, pasted directly into the code. What could go wrong?
+        </p>
+
+        <p>
+          It broke the string literal. JavaScript requires a string to sit on a single line inside its quotes — if you paste multi-line content into a single-quoted string, the parser hits the line break and falls over. The game script stopped executing. Black screen again.
+        </p>
+
+        <blockquote class="post-quote">
+          "I pasted the Google Apps Script URL into the code and now nothing works again. Same black screen. Different URL this time."
+        </blockquote>
+
+        <p>
+          The fix: the URL needed to be on one line, unbroken. Once that was done, everything came back. It's an easy mistake — you're pasting a URL, it looks fine in the editor — but the invisible line break kills the parser just as effectively as the invisible Unicode character did.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 5:</strong> When pasting URLs or long strings into code, make sure they land on a single line. A URL pasted from a broken-up source — a PDF, a formatted document, a multi-line email — can contain invisible line breaks that the parser cannot handle.
+          </div>
+        </div>
+
+        <h2>The Leaderboard That Outgrew Supabase</h2>
+
+        <p>
+          BinDaRoids had a leaderboard. Naturally, BinVaders needed one too. I started with the same approach — Supabase, the free database service I'd used before.
+        </p>
+
+        <p>
+          Supabase had hit its free tier limits. The leaderboard stopped working.
+        </p>
+
+        <p>
+          Rather than pay for a tier, I looked at what I actually had available and landed on something genuinely clever: Google Sheets as a database, with a Google Apps Script deployed as a web app acting as the secure gateway between the game and the spreadsheet.
+        </p>
+
+        <p>
+          The flow: game submits a score via POST to the Apps Script URL. Apps Script writes it to the spreadsheet. Game fetches the top 10 via GET. Apps Script reads the spreadsheet and returns JSON. The spreadsheet is the database. The Apps Script is the API. Both are free. Both scale to whatever traffic a retro game about sentient rubbish gets.
+        </p>
+
+        <div class="post-callout post-callout--warning">
+          <span class="callout-icon" aria-hidden="true">&#9888;</span>
+          <div>
+            <strong>The CORS wrinkle:</strong> Browsers normally block cross-origin POST requests unless the server explicitly permits them (CORS). Google Apps Script doesn't send the right headers. The solution: use <code>mode: 'no-cors'</code> for the POST, which bypasses the preflight check. The downside is you can't read the response — but for a score submission, you don't need to. You just need it to land.
+          </div>
+        </div>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 6:</strong> Free tiers run out. When they do, look at what you already have. Google Sheets + Apps Script is a genuinely capable backend for a simple leaderboard — free, reliable, and you own the data.
+          </div>
+        </div>
+
+        <h2>Entries 8, 9, 10 — The iOS Keyboard Saga</h2>
+
+        <p>
+          This was the longest and most complex debugging sequence of the entire BinVaders build. Possibly the entire Synaptic Stars project. It took three separate sessions and produced three separate fixes for three separate platform-specific problems that all looked like "the keyboard doesn't work on mobile."
+        </p>
+
+        <p>
+          The game needs players to type their name for the leaderboard. On desktop: easy. A hidden input element captures the keyboard, the game reads the characters and displays them on canvas. On mobile: everything was a fight.
+        </p>
+
+        <h3>Entry 8 — The Ghost Input</h3>
+
+        <p>
+          After submitting a name and returning to the game, some users found the on-screen buttons unresponsive. The hidden input element — the one used to capture the keyboard — was retaining focus after name entry was complete. It was invisible, but it was still intercepting button taps. The game thought you were typing. You thought you were firing.
+        </p>
+
+        <p>
+          Fix: explicitly blur the input element when restarting. One line. But you have to know to look for it.
+        </p>
+
+        <h3>Entry 9 — The Landscape Keyboard</h3>
+
+        <p>
+          On Android in landscape mode, the on-screen keyboard occupies a significant portion of the screen. The game was using <code>window.innerHeight</code> to measure available space — but that value doesn't account for the keyboard. The game canvas was being pushed out of view.
+        </p>
+
+        <p>
+          The fix: switch to <code>visualViewport.height</code>, which returns the actual visible area minus the keyboard. The canvas resizes correctly. The game stays on screen.
+        </p>
+
+        <p>
+          There was also a lost-focus problem in the same session: if a player accidentally tapped outside the input during name entry, the keyboard dismissed and they couldn't get it back. A blur event listener now detects this and restores focus automatically.
+        </p>
+
+        <h3>Entry 10 — The iPhone Security Rule</h3>
+
+        <p>
+          iOS has a specific security rule: the on-screen keyboard will only open if focus was triggered directly by a user gesture. You can't programmatically focus an input element and expect the keyboard to open on an iPhone — iOS won't allow it because doing so without a direct tap could be used to hijack input on other sites.
+        </p>
+
+        <p>
+          The game was calling <code>.focus()</code> on the hidden input from within the game loop. iOS saw that as programmatic — not a direct user gesture — and refused to open the keyboard.
+        </p>
+
+        <p>
+          The solution was lateral: expand the hidden input to a transparent overlay covering the entire canvas during name entry. Now when a player taps anywhere on the screen, that tap directly focuses the input — it's the player's finger triggering focus, not the game code. iOS is satisfied. The keyboard opens. The name gets typed.
+        </p>
+
+        <p>
+          A hint also appears on screen for iOS users so they know to tap the canvas area.
+        </p>
+
+        <div class="post-callout post-callout--warning">
+          <span class="callout-icon" aria-hidden="true">&#9888;</span>
+          <div>
+            <strong>The pattern:</strong> Three different problems. Ghost focus retention. Keyboard-unaware layout. iOS gesture security. All three produced "the keyboard doesn't work" as their symptom. Each needed a completely different fix, in a completely different part of the code, for a completely different reason.
+          </div>
+        </div>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 7:</strong> Mobile keyboard issues are almost never one problem. Test on Android <em>and</em> iOS, in portrait <em>and</em> landscape. They are different platforms with different rules, and the same symptom can have three different causes depending on which device you're looking at.
+          </div>
+        </div>
+
+        <h2>Adding BinVaders to the Website</h2>
+
+        <p>
+          Once the game was done and live, it needed a home on the Synaptic Stars site. This is where building a third game presented a new kind of challenge — one I hadn't faced with the first two.
+        </p>
+
+        <p>
+          The games grid on the homepage had been designed for two tiles. The CSS was built around two cards. Adding a third wasn't just "copy and paste another tile" — the layout needed to handle three items gracefully across different screen sizes, the SVG preview needed to capture what BinVaders actually looks like (dark background, gold border, rows of green bin-shaped invaders, the truck at the bottom), and the footer navigation needed a new link.
+        </p>
+
+        <p>
+          The SVG for the preview also had to be self-contained: no filter IDs clashing with the ones already used by the BinDaRoids and Rubbish Run tiles. Each tile lives in the same page, so all SVG filter IDs across all three tiles have to be unique — otherwise one tile's glow effect hijacks another's, or disappears entirely.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Lesson 8:</strong> SVG filter IDs are global per page. If you're adding a new SVG to a page that already has SVGs with filters, make sure the new IDs are unique. <code>bv-gold-glow</code> and <code>rr-gold-glow</code> are different. <code>gold-glow</code> used twice is a collision waiting to happen.
+          </div>
+        </div>
+
+        <p>
+          The meta description also needed updating — it had been describing a two-game site. A site that now has three games should say so, for both honesty and SEO.
+        </p>
+
+        <h2>The Full Iteration Map</h2>
+
+        <div class="post-table-wrap" role="region" aria-label="Summary of BinVaders build iterations" tabindex="0">
+          <table class="post-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>What Was Done</th>
+                <th>Problem Found</th>
+                <th>Fix Applied</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Full game built: grid movement, 5 enemy types, barriers, UFO, audio</td>
+                <td>Working first pass — no structural issues</td>
+                <td>N/A — first build was solid</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Debug: black screen after edits</td>
+                <td>Unicode minus sign (U+2212) broke JS parser. Duplicate <code>color</code> property caused NaN positions</td>
+                <td>Replaced invisible character. Renamed property to avoid collision</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Debug: life system chaos</td>
+                <td>Five simultaneous bugs: unclosed loop, missing guard, nextLevel during death, no input cooldown, broken respawn edge detection</td>
+                <td>All five fixed in one pass after individual diagnosis</td>
+              </tr>
+              <tr>
+                <td>4–6</td>
+                <td>Difficulty tuning, invader fire, level announcements, UFO polish</td>
+                <td>Balancing — too easy at low levels, fire frequency, UFO timing</td>
+                <td>Iterative value adjustments across multiple sessions</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Leaderboard: Google Sheets + Apps Script</td>
+                <td>Supabase free tier exhausted. Pasted URL broke string literal (black screen again)</td>
+                <td>Switched to Google Sheets backend. Fixed URL to single line</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Mobile: ghost input retaining focus</td>
+                <td>Buttons unresponsive after name entry — hidden input still had focus</td>
+                <td>Explicit blur on game restart</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Android landscape: keyboard pushing canvas off screen</td>
+                <td><code>window.innerHeight</code> didn't account for keyboard height</td>
+                <td>Switched to <code>visualViewport.height</code>. Added blur event listener for lost-focus recovery</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>iOS: keyboard refusing to open</td>
+                <td>iOS blocks programmatic focus — only direct user gestures open keyboard</td>
+                <td>Hidden input expanded to transparent canvas overlay during name entry. User tap triggers focus directly</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Added to Synaptic Stars website</td>
+                <td>Third tile in a two-tile grid. SVG filter ID collisions. Footer and meta out of date</td>
+                <td>Third tile added. Unique filter IDs (bv- prefix). Footer and meta updated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What BinVaders Taught Me</h2>
+
+        <h3>The third game is different.</h3>
+        <p>
+          The first game is figuring out if you can do it. The second game is figuring out if the first one was a fluke. The third game is where you start to feel like you actually know what you're doing. The brief was better. The debugging was faster. The things that tripped me up were new things, not the same things again.
+        </p>
+
+        <h3>Platform-specific bugs are their own discipline.</h3>
+        <p>
+          The iOS keyboard problem wasn't a logic bug. It wasn't a code error. It was a platform security rule that required understanding <em>why iOS works the way it does</em> before the fix made any sense. Mobile is not a smaller desktop. It's a different environment with different rules, and the same symptom can have three different causes depending on which device you're holding.
+        </p>
+
+        <h3>Invisible characters are real.</h3>
+        <p>
+          A Unicode minus sign. A line break inside a string. Neither of these is visible in an editor. Both are catastrophic to a JavaScript parser. If you ever get a black screen and can't see why, look for things you pasted in from outside the code environment. The problem is probably invisible.
+        </p>
+
+        <h3>Free tiers run out. Have a plan B.</h3>
+        <p>
+          Supabase hitting its limit was not a disaster — it was a nudge to find a better solution. Google Sheets plus Apps Script is genuinely excellent for this use case. The data is in a spreadsheet I own, there's no third-party account to maintain, and it costs nothing. Sometimes the nudge to find the better thing is the free tier ceiling.
+        </p>
+
+        <h3>The universe is now a trilogy.</h3>
+        <p>
+          Runner. Blaster. Invaders. Three games. One website. One robot. The Synaptic Stars retro universe is starting to feel like a real place.
+        </p>
+
+        <p>
+          What's next? I genuinely don't know. But I said that before BinVaders too.
+        </p>
+
+        <div class="post-sign-off">
+          <p>— Barney, Non-Dev, Accidental Arcade Operator</p>
+          <p class="sign-off-emoji" aria-hidden="true">&#128465; &#9889; &#11088;</p>
+        </div>
+
+      </article>
+
+      <!-- Post navigation -->
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="post-003.html" class="post-nav-prev" aria-label="Previous post: Building the Lair">
+          <span aria-hidden="true">&#8592;</span> PREVIOUS
+        </a>
+        <a href="index.html" class="post-nav-all">ALL POSTS</a>
+        <span class="post-nav-next disabled" aria-disabled="true">
+          NEXT <span aria-hidden="true">&#8594;</span>
+        </span>
+      </nav>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-title">SYNAPTIC STARS RETRO UNIVERSE</p>
+      <p class="footer-copy">&copy; 2026 Synaptic Stars &bull; Made with vibes, Claude &amp; chaos</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
+        <a href="https://synapticstar101.github.io/Barneys-bins/" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+        <a href="https://synapticstar101.github.io/Barney-s-BinVaders/" target="_blank" rel="noopener noreferrer">BinVaders</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/sounds.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

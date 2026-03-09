@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Synaptic Stars Retro Universe - Free retro games made with Vibe coding. Play Barney's BinDaRoids and Barney's Bins: The Rubbish Run!" />
+  <meta name="description" content="Synaptic Stars Retro Universe - Free retro games made with Vibe coding. Play Barney's BinDaRoids, Barney's Bins: The Rubbish Run, and Barney's BinVaders!" />
   <title>Synaptic Stars Retro Universe</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -332,6 +332,98 @@
           </a>
         </article>
 
+
+        <!-- Game Tile 3: BinVaders -->
+        <article class="game-tile" role="listitem">
+          <a href="https://synapticstar101.github.io/Barney-s-BinVaders/" target="_blank" rel="noopener noreferrer" class="game-tile-link" aria-label="Play Barney's BinVaders - a retro space-invaders-style arcade shooter (opens in new tab)">
+            <div class="game-tile-inner">
+              <div class="game-screen-preview" aria-hidden="true">
+                <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+                  <defs>
+                    <filter id="bv-gold-glow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="2" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="bv-green-glow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="2.5" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  <!-- Dark starfield background -->
+                  <rect width="320" height="180" fill="#000010"/>
+                  <!-- Stars -->
+                  <circle cx="18"  cy="12"  r="0.8" fill="white" opacity="0.7"/>
+                  <circle cx="55"  cy="7"   r="1"   fill="white" opacity="0.8"/>
+                  <circle cx="100" cy="20"  r="0.8" fill="white" opacity="0.6"/>
+                  <circle cx="160" cy="10"  r="1"   fill="white" opacity="0.9"/>
+                  <circle cx="220" cy="16"  r="0.8" fill="white" opacity="0.7"/>
+                  <circle cx="270" cy="8"   r="1"   fill="white" opacity="0.8"/>
+                  <circle cx="305" cy="22"  r="0.8" fill="white" opacity="0.6"/>
+                  <circle cx="38"  cy="165" r="0.8" fill="white" opacity="0.5"/>
+                  <circle cx="130" cy="170" r="1"   fill="white" opacity="0.7"/>
+                  <circle cx="255" cy="160" r="0.8" fill="white" opacity="0.6"/>
+                  <!-- Gold border (matching the real game) -->
+                  <rect x="1" y="1" width="318" height="178" fill="none" stroke="#FFD700" stroke-width="3" filter="url(#bv-gold-glow)"/>
+                  <!-- Menu overlay panel -->
+                  <rect x="12" y="10" width="296" height="160" fill="rgba(0,0,0,0.85)" rx="2"/>
+                  <!-- Title -->
+                  <text x="160" y="48" text-anchor="middle" font-family="'Courier New',monospace" font-size="18" font-weight="bold" fill="#FFD700" filter="url(#bv-gold-glow)">BARNEY'S</text>
+                  <text x="160" y="70" text-anchor="middle" font-family="'Courier New',monospace" font-size="18" font-weight="bold" fill="#FFD700" filter="url(#bv-gold-glow)">BINVADERS!</text>
+                  <!-- Enemy row - bins / trash creatures -->
+                  <!-- Row of invader icons (simplified pixel art) -->
+                  <g fill="#00ff88" filter="url(#bv-green-glow)" opacity="0.9">
+                    <!-- Invader 1 (wheelie bin shape) -->
+                    <rect x="52"  y="82" width="12" height="14" rx="1"/>
+                    <rect x="53"  y="79" width="10" height="4" rx="1"/>
+                    <rect x="55"  y="78" width="6"  height="2"/>
+                    <!-- Invader 2 -->
+                    <rect x="82"  y="82" width="12" height="14" rx="1"/>
+                    <rect x="83"  y="79" width="10" height="4" rx="1"/>
+                    <rect x="85"  y="78" width="6"  height="2"/>
+                    <!-- Invader 3 -->
+                    <rect x="112" y="82" width="12" height="14" rx="1"/>
+                    <rect x="113" y="79" width="10" height="4" rx="1"/>
+                    <rect x="115" y="78" width="6"  height="2"/>
+                    <!-- Invader 4 -->
+                    <rect x="142" y="82" width="12" height="14" rx="1"/>
+                    <rect x="143" y="79" width="10" height="4" rx="1"/>
+                    <rect x="145" y="78" width="6"  height="2"/>
+                    <!-- Invader 5 -->
+                    <rect x="172" y="82" width="12" height="14" rx="1"/>
+                    <rect x="173" y="79" width="10" height="4" rx="1"/>
+                    <rect x="175" y="78" width="6"  height="2"/>
+                    <!-- Invader 6 -->
+                    <rect x="202" y="82" width="12" height="14" rx="1"/>
+                    <rect x="203" y="79" width="10" height="4" rx="1"/>
+                    <rect x="205" y="78" width="6"  height="2"/>
+                    <!-- Invader 7 -->
+                    <rect x="232" y="82" width="12" height="14" rx="1"/>
+                    <rect x="233" y="79" width="10" height="4" rx="1"/>
+                    <rect x="235" y="78" width="6"  height="2"/>
+                  </g>
+                  <!-- Missile shot upward -->
+                  <rect x="159" y="112" width="2" height="12" fill="#ff2222" opacity="0.9"/>
+                  <!-- Divider line -->
+                  <rect x="30" y="130" width="260" height="1" fill="#FFD700" opacity="0.4"/>
+                  <!-- Player truck (simplified) -->
+                  <rect x="140" y="138" width="40" height="14" rx="3" fill="#00ff88" opacity="0.85"/>
+                  <rect x="144" y="133" width="32" height="8"  rx="2" fill="#00aa55" opacity="0.85"/>
+                  <circle cx="148" cy="154" r="4" fill="#555"/>
+                  <circle cx="172" cy="154" r="4" fill="#555"/>
+                  <!-- Start prompt -->
+                  <text x="160" y="172" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" font-weight="bold" fill="#00ff88" filter="url(#bv-green-glow)">PRESS SPACE / FIRE TO START</text>
+                </svg>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">Barney's BinVaders!</h3>
+                <p class="game-genre">&#128465; ARCADE SHOOTER</p>
+                <p class="game-desc">Space Invaders, but make it rubbish! Blast descending waves of rats, bin bags, and toxic barrels before they reach Barney's truck!</p>
+                <span class="play-btn" aria-hidden="true">&#9654; PLAY NOW</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
       </div>
     </section>
 
@@ -394,6 +486,7 @@
         <a href="blog/index.html">Blog</a>
         <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
         <a href="https://synapticstar101.github.io/Barneys-bins/" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+        <a href="https://synapticstar101.github.io/Barney-s-BinVaders/" target="_blank" rel="noopener noreferrer">BinVaders</a>
       </nav>
       <p class="footer-credits" aria-hidden="true">&#9889; &#11088; &#9889; &#11088; &#9889;</p>
     </div>
