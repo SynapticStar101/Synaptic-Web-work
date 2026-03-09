@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Building the Lair: How I vibe coded the entire Synaptic Stars website with Claude AI — prompts, iterations, logo disasters, URL disasters, and lessons learned." />
+  <title>Building the Lair: How I Made This Whole Website | Misadventures in Vibing | Synaptic Stars</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="sound-control" role="region" aria-label="Sound controls">
+    <button id="sound-toggle" class="sound-btn" aria-pressed="false" aria-label="Toggle site sounds on or off">
+      <span class="sound-icon" aria-hidden="true">&#128266;</span>
+      <span class="sound-label">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <header class="post-header" role="banner">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="index.html">Blog</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Building the Lair</li>
+      </ol>
+    </nav>
+    <div class="post-header-content">
+      <div class="post-meta-top">
+        <span class="post-ep-badge">EP. 003</span>
+        <span class="post-date-top">MARCH 2026</span>
+      </div>
+      <h1 class="post-title">Building the Lair: How I Made This Whole Website</h1>
+      <p class="post-subtitle">The prompts. The iterations. The logo that went through three complete identities. The URLs that were wrong twice. All of it.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="post-main">
+    <div class="post-container">
+
+      <article class="post-content" aria-label="Blog post content">
+
+        <p class="post-intro">
+          At some point between finishing BinDaRoids and staring at two browser tabs that had nowhere to live, I realised something: my games needed a home. Not just a GitHub repo buried under a username no one would ever search. A proper home. A landing page. A <em>lair</em>.
+        </p>
+
+        <p>
+          Reader, I had absolutely no idea how to make a website. But I had Claude. And I had vibes. And honestly, at this point in the journey, I had started to believe those two things were basically a superpower.
+        </p>
+
+        <p>
+          This is the story of how I built the site you are currently reading — every prompt, every disaster, every logo that had to die so a better logo could live.
+        </p>
+
+        <h2>Step One: The Vision Dump</h2>
+
+        <p>
+          When you're vibe coding, the quality of what comes out is almost entirely dependent on the quality of what you put in. I'd learned this the hard way with the games. So this time, before I typed a single word to Claude, I sat down and actually thought about what I wanted.
+        </p>
+
+        <p>
+          Here's the prompt that started it all — my actual, real, unedited first message:
+        </p>
+
+        <blockquote class="post-quote">
+          "I want to build a website called Synaptic Stars Retro Universe. It should be a hub for all my retro games — right now there are two: Barney's BinDaRoids (an asteroids-style game) and Barney's Bins: The Rubbish Run (an endless runner). I want it to look like an old-school arcade — neon colours, retro fonts, maybe some scanlines — but still feel modern and clean. I want a logo, a games section showing both games with links, a blog section for my Misadventures in Vibing blog series, an about section explaining what this is, and a footer. I want it to be fully accessible. Can you build the whole thing?"
+        </blockquote>
+
+        <p>
+          I want you to notice something about that prompt. It's specific. It names the games. It describes the aesthetic. It lists every section I wanted. It mentions accessibility. That last bit — I'd learned from the games that Claude takes accessibility seriously, and if you ask for it upfront, you get things like skip links, ARIA labels, and proper keyboard navigation baked in from the start rather than bolted on later.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Vibe coding tip:</strong> The more specific your first prompt, the less correcting you'll do later. Think of it like giving a builder a blueprint versus pointing at a field and saying "build something nice." Both will result in a structure. Only one will result in the structure you actually wanted.
+          </div>
+        </div>
+
+        <h2>Step Two: The First Build (Seven Files, One Shot)</h2>
+
+        <p>
+          Claude produced seven files. In one go. I sat there watching the code appear and had that feeling again — the same one I got when Barney first appeared on screen, the same one when the first bin exploded in BinDaRoids. That "hang on, this is actually happening" feeling.
+        </p>
+
+        <p>
+          The files were:
+        </p>
+
+        <ul class="post-list">
+          <li><strong>index.html</strong> — the main landing page, with a logo, game tiles, blog section, about section, and footer</li>
+          <li><strong>css/style.css</strong> — a full retro neon stylesheet (786 lines of it — I checked)</li>
+          <li><strong>js/sounds.js</strong> — a Web Audio API sound system, off by default, with a toggle button</li>
+          <li><strong>js/main.js</strong> — the wiring for sounds, hover effects, and a CRT scanline overlay</li>
+          <li><strong>blog/index.html</strong> — the blog index listing all my posts</li>
+          <li><strong>blog/post-001.html</strong> — the first blog post (which you may have already read)</li>
+          <li><strong>css/blog.css</strong> — separate styles just for the blog (562 lines)</li>
+        </ul>
+
+        <p>
+          Over two thousand lines of code. For a website I described in about forty words.
+        </p>
+
+        <p>
+          Was it perfect? No. But it was a complete, working, genuinely good-looking starting point. The neon colours were right. The fonts (Press Start 2P for headings, Orbitron for everything else) were exactly what I'd imagined. The scanline effect was subtle and cool. The sound toggle worked. The accessibility was solid.
+        </p>
+
+        <p>
+          The logo, however, was something else entirely.
+        </p>
+
+        <h2>Step Three: The Logo That Went Through Three Lives</h2>
+
+        <p>
+          The first logo was a brain with a unicorn. I want to be clear: I did not ask for a brain with a unicorn. I asked for a "Synaptic Stars" logo that felt retro and cool. The brain part I could see the logic in — "synaptic" — neurons — brains. Fine. The unicorn, I genuinely have no idea. It just appeared.
+        </p>
+
+        <p>
+          It looked... fine? Kind of? It was an SVG, built entirely in code, no image files. Impressive technically. But it wasn't right. So I went back to Claude with a new prompt:
+        </p>
+
+        <blockquote class="post-quote">
+          "The logo isn't quite what I imagined. Can you redesign it to look more cartoon-style, more like something you'd see on the side of an arcade cabinet? Keep the Synaptic Stars name but make the icon feel more fun and retro."
+        </blockquote>
+
+        <p>
+          This gave me version two: a cartoon redesign of the brain-unicorn concept. It was better. More playful. But there was still something off about it that I couldn't quite put my finger on.
+        </p>
+
+        <p>
+          That's when I had the idea. I went back one more time:
+        </p>
+
+        <blockquote class="post-quote">
+          "I want to completely replace the logo. Forget the brain and unicorn. I want a friendly retro robot mascot — think 1950s sci-fi toy robot. Give it star-shaped eyes that glow, cone-shaped antennae with glowing balls on the tips, and have a fizzing lightning bolt crackling between the antennae. Rosy cheeks. Big smile. The whole thing should feel like it belongs in a neon arcade cabinet circa 1983."
+        </blockquote>
+
+        <p>
+          And that is how the robot was born.
+        </p>
+
+        <p>
+          If you look at the logo at the top of this site right now — that's him. Star eyes. Purple antenna balls. A wild lightning bolt zigzagging between them. Rosy cheeks. A smile that says "I am delighted by your visit and also possibly about to malfunction."
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Vibe coding tip:</strong> Don't settle for version one of anything visual. When you're describing something creative to an AI, your first prompt is almost always an approximation of what you actually want. Get something on screen, look at it, <em>then</em> describe what's wrong with it. Iteration is the process, not the failure.
+          </div>
+        </div>
+
+        <h2>Step Four: The GitHub Pages Situation</h2>
+
+        <p>
+          Here's a thing I did not know when I started: GitHub, where I was hosting everything, has a feature called GitHub Pages that lets you turn a repository into a live website. Free. No servers. No hosting fees. Magic.
+        </p>
+
+        <p>
+          But here's the catch — and this is very GitHub — it expects your deployable files to be either at the root of your repository or in a specific folder called <code>docs/</code>. My files were in a folder called <code>synaptic-stars/</code>, which is a perfectly reasonable name but is not <code>docs/</code>, and GitHub Pages is not in the business of being flexible about this.
+        </p>
+
+        <p>
+          So I went back to Claude:
+        </p>
+
+        <blockquote class="post-quote">
+          "I need to deploy this to GitHub Pages. GitHub Pages needs the files to be in a folder called docs/. Can you help me set that up?"
+        </blockquote>
+
+        <p>
+          Claude explained the situation, helped me understand the structure, and created a mirrored <code>docs/</code> folder with all the same files. Then I had two folders — <code>synaptic-stars/</code> as my working copy and <code>docs/</code> as the deployed version. Every time I update the site, both need updating. It's a slightly clunky setup, but it works, and understanding <em>why</em> it works made me feel briefly like I understood something about web infrastructure.
+        </p>
+
+        <p>
+          Briefly. The feeling passed.
+        </p>
+
+        <div class="post-callout post-callout--warning">
+          <span class="callout-icon" aria-hidden="true">&#9888;</span>
+          <div>
+            <strong>Heads up:</strong> If you're hosting on GitHub Pages, ask Claude about the folder structure upfront. Save yourself the "wait, why isn't this live?" confusion. Tell Claude from the start: "I'm deploying to GitHub Pages" and it will structure everything correctly from the beginning.
+          </div>
+        </div>
+
+        <h2>Step Five: The URL Disasters (Plural, Yes, Plural)</h2>
+
+        <p>
+          When Claude built the game tiles — those preview panels on the homepage that link to BinDaRoids and The Rubbish Run — it had to guess at the URLs. I hadn't given it the actual GitHub Pages links. So it made reasonable guesses. They were wrong.
+        </p>
+
+        <p>
+          I clicked the BinDaRoids button. It went somewhere that was not BinDaRoids. I clicked The Rubbish Run button. Same problem. I sent a message:
+        </p>
+
+        <blockquote class="post-quote">
+          "The game links aren't correct. BinDaRoids should go to [the actual URL] and The Rubbish Run should go to [the actual URL]. Can you fix all the places these appear?"
+        </blockquote>
+
+        <p>
+          Claude fixed them. Across all files. Blog pages, footer nav, game tiles — everywhere.
+        </p>
+
+        <p>
+          Then I checked The Rubbish Run link again. Still wrong. Different wrong — the original had been a placeholder, now it was pointing to a real URL but the wrong repository. I had two separate repos for the two games, and the one that had been guessed was the BinDaRoids repo, not the Rubbish Run one.
+        </p>
+
+        <p>
+          Second fix. Different message, same energy:
+        </p>
+
+        <blockquote class="post-quote">
+          "The Rubbish Run URL is still wrong. It's currently pointing to the BinDaRoids repo. The correct URL for The Rubbish Run is [the correct URL]. Please fix this everywhere."
+        </blockquote>
+
+        <p>
+          Fixed. Finally. All links working. Games accessible. Crisis averted.
+        </p>
+
+        <div class="post-callout post-callout--tip">
+          <span class="callout-icon" aria-hidden="true">&#128161;</span>
+          <div>
+            <strong>Vibe coding tip:</strong> Always give Claude the actual URLs, usernames, and links from the start. It will make reasonable guesses if you don't — but reasonable guesses are wrong guesses. Copy and paste the real thing. It takes five extra seconds and saves you two extra fixes.
+          </div>
+        </div>
+
+        <h2>Step Six: Making the Games Look Like Themselves</h2>
+
+        <p>
+          The game tiles on the homepage originally had very basic preview graphics — simple placeholder-style visuals that didn't really capture what the games looked or felt like. I wanted someone landing on the site to get an immediate sense of each game's personality.
+        </p>
+
+        <p>
+          I also noticed the game order in the blog post didn't match the order on the homepage. Small thing. Annoying thing. The kind of thing that bugs you more each time you see it.
+        </p>
+
+        <p>
+          So I sent another round of requests:
+        </p>
+
+        <blockquote class="post-quote">
+          "The game preview graphics need to be updated. For BinDaRoids, it should look like a proper arcade game title screen — dark space background, cyan neon title text glowing, an INSERT COIN button, and controls hints at the bottom. For The Rubbish Run, it should match the actual game menu — dark navy background, gold text for BARNEY'S BINS, white for THE RUBBISH RUN, orange dividers, a green PRESS ENTER prompt. Also fix the game order in the blog post so it matches the main page — BinDaRoids first, then The Rubbish Run."
+        </blockquote>
+
+        <p>
+          The result was the game tiles you see now. BinDaRoids gets its cyan-glowing arcade screen. The Rubbish Run gets its gold-bordered dark panel with the green start prompt. They look like themselves. They look like their actual title screens. This is the detail that makes a site feel like it was made with care rather than assembled in a hurry.
+        </p>
+
+        <p>
+          (The unicorn issue I mentioned in the commit notes — there was a small SVG element in the original logo that had been carried over into the graphics pass and didn't belong there. I spotted it, flagged it, it was removed. These little things matter.)
+        </p>
+
+        <h2>Step Seven: The Robot Gets His Final Form</h2>
+
+        <p>
+          After all of the above was done, I kept coming back to the logo. The cartoon version was fine. But "fine" isn't really the Synaptic Stars standard. I wanted something memorable. Something that if you saw it on a t-shirt you'd know exactly what it was.
+        </p>
+
+        <p>
+          The robot mascot prompt was probably the most detailed creative brief I've ever written to an AI:
+        </p>
+
+        <blockquote class="post-quote">
+          "I want to completely replace the current logo with a retro robot mascot. Here's what I'm imagining: a friendly 1950s-style toy robot, full body visible, with star-shaped glowing eyes (yellow, with a shine dot), rosy circular cheeks, a big friendly smile, cone-shaped antennae on either side of the head with glowing purple balls on the tips, and a fizzing zigzag lightning bolt crackling between the two antenna balls. The body should have dials and a small control panel on the chest. Robot should have arms, legs, feet — the whole thing. Colour scheme: blue metallic for the body, purple for the antenna balls, neon glow effects on the eyes and lightning bolt. Make it look like it belongs in a neon arcade. Keep the 'SYNAPTIC STARS RETRO UNIVERSE' text alongside it."
+        </blockquote>
+
+        <p>
+          What came back was the robot you see at the top of this page. Everything I described — and then some. The sparkle dots scattered around him. The rosy cheeks. The forehead vent panel with its little grid lines. The afterglow shadow underneath his feet. Even the tiny shine dot on each star eye.
+        </p>
+
+        <p>
+          That robot is built entirely from SVG code. No image files. Pure coordinates, shapes, gradients, and filters. Hundreds of lines of maths that somehow resolves into a friendly robot with rosy cheeks. I didn't write a single one of those lines. But I knew exactly what I wanted him to look like, and I described it clearly enough that he arrived.
+        </p>
+
+        <h2>What I Actually Learned (For Real This Time)</h2>
+
+        <p>
+          Building this website across eight pull requests and more iterations than I expected taught me things about vibe coding that the games hadn't quite drilled in yet. Here's the actual list:
+        </p>
+
+        <ul class="post-list">
+          <li><strong>Be specific from the start.</strong> Every vague word in your prompt becomes a decision Claude makes for you. Sometimes you'll like the decision. Sometimes you'll get a unicorn.</li>
+          <li><strong>Iterate without shame.</strong> Nothing about vibe coding says you have to get it right in one go. Version one is the start of the conversation, not the end.</li>
+          <li><strong>Always paste your actual URLs, names, and links.</strong> AI will guess. Guesses are wrong. Copy and paste.</li>
+          <li><strong>Describe visual things with real detail.</strong> "Make it look retro" is not a brief. "1950s toy robot with star eyes, cone antennae, purple glowing balls, fizzing lightning bolt between them, rosy cheeks, full body, neon blue metallic" — <em>that</em> is a brief.</li>
+          <li><strong>Ask for accessibility from the start.</strong> Skip links, ARIA labels, keyboard navigation, reduced-motion support — all of this is in this site because I asked for it in the first prompt. Retrofitting accessibility is much harder.</li>
+          <li><strong>Commit often.</strong> Every iteration lives in GitHub history. Every mistake is recoverable. This is your safety net and your time machine. Use it.</li>
+          <li><strong>Check everything after a change.</strong> When Claude updates files, check every link, every image, every section. Not because Claude is careless, but because connected systems have connected consequences.</li>
+        </ul>
+
+        <h2>The Thing That Gets Me Every Time</h2>
+
+        <p>
+          Here's the part I keep coming back to. I described a retro robot with star eyes and a fizzing lightning bolt between his antennae. And now he exists. He's up there at the top of the page, smiling at everyone who visits, his purple antenna balls glowing, the yellow zigzag crackling between them.
+        </p>
+
+        <p>
+          I didn't draw him. I didn't code him. I didn't know how to do either. But I knew what I wanted, and I communicated it clearly, and now he's real.
+        </p>
+
+        <p>
+          That's vibe coding. That's the whole thing. You bring the vision. The AI brings the technical execution. The thing that gets made is more yours than you might expect — because the vision was always the hardest part.
+        </p>
+
+        <p>
+          You just didn't know it yet.
+        </p>
+
+        <div class="post-sign-off">
+          <p>— Barney, Non-Dev, Accidental Web Designer</p>
+          <p class="sign-off-emoji" aria-hidden="true">&#129302; &#9889; &#11088;</p>
+        </div>
+
+      </article>
+
+      <!-- Post navigation -->
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="post-001.html" class="post-nav-prev" aria-label="Previous post: Day Zero">
+          <span aria-hidden="true">&#8592;</span> PREVIOUS
+        </a>
+        <a href="index.html" class="post-nav-all">ALL POSTS</a>
+        <a href="#" class="post-nav-next post-nav-next--coming-soon" aria-label="Next post coming soon">
+          NEXT <span aria-hidden="true">&#8594;</span>
+          <span class="post-nav-coming">COMING SOON</span>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-title">SYNAPTIC STARS RETRO UNIVERSE</p>
+      <p class="footer-copy">&copy; 2026 Synaptic Stars &bull; Made with vibes, Claude &amp; chaos</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="https://synapticstar101.github.io/Barneys-BinDaRoids/" target="_blank" rel="noopener noreferrer">BinDaRoids</a>
+        <a href="https://synapticstar101.github.io/Barneys-bins/" target="_blank" rel="noopener noreferrer">The Rubbish Run</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/sounds.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
